@@ -1,0 +1,37 @@
+{% extends 'account/base2.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Crossing the Gap: Registration{% endblock %}
+{% block body %}
+    <!-- Content -->
+    <div class="page-content">
+        <!-- inner page banner -->
+        <div class="dez-bnr-inr overlay-black-middle" style="background-image:url(images/banner/bnr1.jpg);">
+            <div class="container">
+                <div class="breadcrumb-row">
+                    <h1 class="text-white">Register Complete</h1>
+                    <ul class="list-inline text-white m-b30">
+                        <li><a href="{% url 'account:index' %}">Home</a></li>
+                        <li>Register Complete</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- inner page banner END -->
+        <!-- contact area -->
+        <div class="section-full content-inner">
+            <div class="container">
+                <div class="row">
+                    <!-- Left part start -->
+                    <div class="col-12 mx-auto">
+                        <div class="p-a30 bg-white clearfix m-b30">
+                            <p>A registration link has been sent to the email address you provided. Please check your SPAM folder or your Junk Mail Folder.</p>
+                        </div>
+                    </div>
+                    <!-- Left part END -->
+                </div>
+            </div>
+        </div>
+        <!-- contact area  END -->
+    </div>
+    <!-- Content END-->
+{% endblock %}

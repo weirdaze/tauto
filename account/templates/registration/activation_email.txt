@@ -1,0 +1,5 @@
+
+Hello {{ user.first_name }} {{ user.last_name }} {{ user.username }} {{ user.email }}
+
+Crossing the Gap Registration - Activate your account in less than {{ expiration_days }} days!
+http://{{ site.domain }}{% url 'registration_activate' activation_key %}

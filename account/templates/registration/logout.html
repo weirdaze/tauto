@@ -1,0 +1,36 @@
+{% extends 'account/base2.html' %}
+{% block title %}Crossing the Gap: Log Out{% endblock %}
+{% block body %}
+    <!-- Content -->
+    <div class="page-content">
+        <!-- inner page banner -->
+        <div class="dez-bnr-inr overlay-black-middle" style="background-image:url(images/banner/bnr1.jpg);">
+            <div class="container">
+                <div class="breadcrumb-row">
+                    <h1 class="text-white">Logged Out</h1>
+                    <ul class="list-inline text-white m-b30">
+                        <li><a href="{% url 'account:index' %}">Home</a></li>
+                        <li>Logged Out</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- inner page banner END -->
+        <!-- contact area -->
+        <div class="section-full content-inner">
+            <div class="container">
+                <div class="row">
+                    <!-- Left part start -->
+                    <div class="col-12 mx-auto">
+                        <div class="p-a30 bg-white clearfix m-b30">
+                            <p>You have been logged out! <a href="{% url 'auth_login' %}">(Log In Again)</a></p>
+                        </div>
+                    </div>
+                    <!-- Left part END -->
+                </div>
+            </div>
+        </div>
+        <!-- contact area  END -->
+    </div>
+    <!-- Content END-->
+{% endblock %}

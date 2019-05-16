@@ -1,0 +1,1 @@
+Crossing the Gap Registration - Activate your account - {{ expiration_days }} days!
