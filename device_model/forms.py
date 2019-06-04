@@ -1,5 +1,5 @@
 from django import forms
-from .models import DeviceType, SlotType, ModuleType, ChipType, DeviceModelNo, SlotModelNo, ModuleBuildModelNo, ChipModelNo, SerdesType
+from .models import DeviceType, SlotType, ModuleType, ChipType, DeviceModelNo, SlotModelNo, ModuleBuildModelNo, ChipModelNo, SerdesType, SerdesSpeed, Mac, Chip
 
 
 class DeviceTypeForm(forms.ModelForm):
@@ -12,6 +12,18 @@ class SerdesTypeForm(forms.ModelForm):
     class Meta:
         model = SerdesType
         fields = ['name']
+
+
+class SerdesSpeedForm(forms.ModelForm):
+    class Meta:
+        model = SerdesSpeed
+        fields = ['speed', 'unit']
+
+
+class MacForm(forms.ModelForm):
+    class Meta:
+        model = Mac
+        fields = ['speed', 'unit']
 
 
 class SlotTypeForm(forms.ModelForm):
@@ -53,18 +65,10 @@ class ModuleBuildModelNoForm(forms.ModelForm):
 class ChipModelNoForm(forms.ModelForm):
     class Meta:
         model = ChipModelNo
-        fields = ['name']
+        fields = ['name', 'code_name']
 
 
-class DeviceModelForm(forms.ModelForm):
-    chassis = models.PositiveIntegerField(default=1)
-    serial = GenericRelation(Serial)
-    mac = GenericRelation(MacAddr)
-    model = models.ForeignKey(DeviceModelNo, on_delete=models.DO_NOTHING)
-    state = models.ForeignKey(DeviceState, on_delete=models.DO_NOTHING)
-    slot = GenericRelation(Slot)
-    num_slots = models.PositiveIntegerField(default=1)
-    type = models.ForeignKey(DeviceType, on_delete=models.DO_NOTHING, blank=True, null=True)
+class ChipForm(forms.ModelForm):
     class Meta:
-        model = ChipModelNo
-        fields = ['name']
+        model = Chip
+        fields = ['name', 'model', 'type', 'macs']

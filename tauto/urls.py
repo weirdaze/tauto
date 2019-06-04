@@ -26,7 +26,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('account.urls')),
     url(r'^workflow/', include('workflow.urls')),
-    url(r'^inventory/', include('inventory.urls')),
     url(r'^device_model/', include('device_model.urls')),
     url(r'^accounts/register/$', MyRegistrationView.as_view(), name='registration_register'),
     url(r'^accounts/login/$', auth_views.LoginView.as_view(), name='auth_login'),

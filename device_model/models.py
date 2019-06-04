@@ -14,7 +14,7 @@ class DeviceType(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('inventory:device_type_view', args=[str(self.pk)])
+        return reverse('device_model:device_type_view', args=[str(self.pk)])
 
 
 class Serial(models.Model):
@@ -28,7 +28,7 @@ class Serial(models.Model):
         return self.number
 
     def get_absolute_url(self):
-        return reverse('inventory:serial_view', args=[str(self.pk)])
+        return reverse('device_model:serial_view', args=[str(self.pk)])
 
 
 class ModelNo(models.Model):
@@ -43,7 +43,7 @@ class ModelNo(models.Model):
         return self.number
 
     def get_absolute_url(self):
-        return reverse('inventory:model_view', args=[str(self.pk)])
+        return reverse('device_model:model_view', args=[str(self.pk)])
 
 
 class State(models.Model):
@@ -58,7 +58,7 @@ class State(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('inventory:state_view', args=[str(self.pk)])
+        return reverse('device_model:state_view', args=[str(self.pk)])
 
 
 class ModuleType(models.Model):
@@ -69,7 +69,7 @@ class ModuleType(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('inventory:module_type_view', args=[str(self.pk)])
+        return reverse('device_model:module_type_view', args=[str(self.pk)])
 
 
 class Speed(models.Model):
@@ -90,7 +90,14 @@ class MacAddr(models.Model):
 
 
 class Mac(models.Model):
-    speed = GenericRelation(Speed)
+    speed = models.PositiveIntegerField(default=0)
+    unit = models.CharField(default='G', max_length=20)
+
+    def __str__(self):
+        return str(self.speed)+self.unit
+
+    def get_absolute_url(self):
+        return reverse('device_model:mac_view', args=[str(self.pk)])
 
 
 class BandwidthGigabits(models.Model):
@@ -144,17 +151,18 @@ class ChipType(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('inventory:chip_type_view', args=[str(self.pk)])
+        return reverse('device_model:chip_type_view', args=[str(self.pk)])
 
 
 class ChipModelNo(models.Model):
     name = models.CharField(max_length=300)
+    code_name = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.name
+        return self.name + " (" + self.code_name + ")"
 
     def get_absolute_url(self):
-        return reverse('inventory:chip_model_no_view', args=[str(self.pk)])
+        return reverse('device_model:chip_model_no_view', args=[str(self.pk)])
 
 
 class SerdesType(models.Model):
@@ -164,11 +172,18 @@ class SerdesType(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('inventory:serdes_type_view', args=[str(self.pk)])
+        return reverse('device_model:serdes_type_view', args=[str(self.pk)])
 
 
 class SerdesSpeed(models.Model):
-    speed = GenericRelation(Speed)
+    speed = models.PositiveIntegerField(default=0)
+    unit = models.CharField(default='G', max_length=20)
+
+    def __str__(self):
+        return str(self.speed) + self.unit
+
+    def get_absolute_url(self):
+        return reverse('device_model:serdes_speed_view', args=[str(self.pk)])
 
 
 class Serdes(models.Model):
@@ -180,21 +195,30 @@ class Serdes(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey()
 
+    def __str__(self):
+        return self.name + " " + str(self.speed)
+
 
 class Chip(models.Model):
     name = models.CharField(max_length=300)
-    serdes_num_front = models.PositiveIntegerField(default=0)
-    serdes_num_fabric = models.PositiveIntegerField(default=0)
-    serdes_speed_front = models.PositiveIntegerField(default=0)
-    serdes_speed_fabric = models.PositiveIntegerField(default=0)
     serdes = GenericRelation(Serdes)
     model = models.ForeignKey(ChipModelNo, on_delete=models.CASCADE)
     macs = models.ManyToManyField(Mac)
-    interface = GenericRelation(Interface)
     type = models.ForeignKey(ChipType, on_delete=models.DO_NOTHING, blank=True, null=True)
 
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    object_id = models.PositiveIntegerField()
+    def __str__(self):
+        return str(self.model)
+
+    def get_absolute_url(self):
+        return reverse('device_model:chip_view', args=[str(self.pk)])
+
+
+class ChipModel(models.Model):
+    chip = models.ForeignKey(Chip, on_delete=models.CASCADE)
+    interface = GenericRelation(Interface)
+
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE, blank=True, null=True)
+    object_id = models.PositiveIntegerField(blank=True, null=True)
     content_object = GenericForeignKey()
 
 
@@ -205,28 +229,15 @@ class ModuleBuildModelNo(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('inventory:module_build_model_no_view', args=[str(self.pk)])
-
-
-class ModuleBuildPorts(models.Model):
-    name = models.CharField(max_length=300)
-    num_phy_ports = models.PositiveIntegerField(default=0)
-    speed_phy_ports = GenericRelation(Speed)
-
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    object_id = models.PositiveIntegerField()
-    content_object = GenericForeignKey()
-
-    def __str__(self):
-        return self.name
+        return reverse('device_model:module_build_model_no_view', args=[str(self.pk)])
 
 
 class ModuleBuild(models.Model):
     name = models.CharField(max_length=300)
     fqdn = models.URLField(blank=True, null=True)
-    chip = GenericRelation(Chip)
+    chip = GenericRelation(ChipModel)
     model = models.ForeignKey(ModuleBuildModelNo, on_delete=models.CASCADE)
-    ports = GenericRelation(ModuleBuildPorts)
+    ports = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.model
@@ -264,7 +275,7 @@ class SlotModelNo(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('inventory:slot_model_no_view', args=[str(self.pk)])
+        return reverse('device_model:slot_model_no_view', args=[str(self.pk)])
 
 
 class SlotType(models.Model):
@@ -274,7 +285,7 @@ class SlotType(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('inventory:slot_type_view', args=[str(self.pk)])
+        return reverse('device_model:slot_type_view', args=[str(self.pk)])
 
 
 class Slot(models.Model):
@@ -304,7 +315,7 @@ class DeviceModelNo(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('inventory:device_model_no_view', args=[str(self.pk)])
+        return reverse('device_model:device_model_no_view', args=[str(self.pk)])
 
 
 class DeviceState(models.Model):

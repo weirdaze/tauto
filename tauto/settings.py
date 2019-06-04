@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     # user defined apps
     'account.apps.AccountConfig',
     'topology.apps.TopologyConfig',
-    'inventory.apps.InventoryConfig',
     'workflow.apps.WorkflowConfig',
     'element.apps.ElementConfig',
     'organization.apps.OrganizationConfig',

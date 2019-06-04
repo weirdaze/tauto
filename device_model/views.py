@@ -3,8 +3,8 @@ from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic import ListView, DetailView, DeleteView
 from django.urls import reverse_lazy
 
-from .models import DeviceType, SlotType, ModuleType, ChipType, DeviceModelNo, SlotModelNo, ModuleBuildModelNo, ChipModelNo, SerdesType, DeviceModel
-from .forms import DeviceTypeForm, SlotTypeForm, ModuleTypeForm, ChipTypeForm, DeviceModelNoForm, SlotModelNoForm, ModuleBuildModelNoForm, ChipModelNoForm, SerdesTypeForm, DeviceModelForm
+from .models import DeviceType, SlotType, ModuleType, ChipType, DeviceModelNo, SlotModelNo, ModuleBuildModelNo, ChipModelNo, SerdesType, DeviceModel, SerdesSpeed, Mac, Chip
+from .forms import DeviceTypeForm, SlotTypeForm, ModuleTypeForm, ChipTypeForm, DeviceModelNoForm, SlotModelNoForm, ModuleBuildModelNoForm, ChipModelNoForm, SerdesTypeForm, SerdesSpeedForm, MacForm, ChipForm
 
 
 # Create your views here.
@@ -19,18 +19,18 @@ class DeviceTypeListView(ListView):
 
     path = [
         ("home", "account:index"),
-        ("device types", "/inventory/device_type_list/"),
-        ("device type list", "/inventory/device_type_list")
+        ("device types", "/device_model/device_type_list/"),
+        ("device type list", "/device_model/device_type_list")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Device Type',
         'section_title': 'Device Types',
         'breadcrumb_path': path,
-        'create': 'inventory:device_type_create',
-        'delete': 'inventory:device_type_delete',
-        'update': 'inventory:device_type_update',
-        'cancel': 'inventory:device_type_list',
+        'create': 'device_model:device_type_create',
+        'delete': 'device_model:device_type_delete',
+        'update': 'device_model:device_type_update',
+        'cancel': 'device_model:device_type_list',
         'icon': 'mdi-format-list-bulleted',
     }
 
@@ -51,18 +51,18 @@ class DeviceTypeUpdateView(UpdateView):
 
     path = [
         ("home", "account:index"),
-        ("device types", '/inventory/device_type_list'),
-        ("device type update", "/inventory/device_type_update")
+        ("device types", '/device_model/device_type_list'),
+        ("device type update", "/device_model/device_type_update")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Device Type Update',
         'section_title': 'Device Type Update',
         'breadcrumb_path': path,
-        'create': 'inventory:device_type_create',
-        'delete': 'inventory:device_type_delete',
-        'update': 'inventory:device_type_update',
-        'cancel': 'inventory:device_type_list',
+        'create': 'device_model:device_type_create',
+        'delete': 'device_model:device_type_delete',
+        'update': 'device_model:device_type_update',
+        'cancel': 'device_model:device_type_list',
         'icon': 'fa fa-edit',
     }
 
@@ -79,18 +79,18 @@ class DeviceTypeCreateView(CreateView):
 
     path = [
         ("home", "account:index"),
-        ("device types", '/inventory/device_type_list'),
-        ("device type create", "/inventory/device_type_create")
+        ("device types", '/device_model/device_type_list'),
+        ("device type create", "/device_model/device_type_create")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Device Type Create',
         'section_title': 'Device Type Create',
         'breadcrumb_path': path,
-        'create': 'inventory:device_type_create',
-        'delete': 'inventory:device_type_delete',
-        'update': 'inventory:device_type_update',
-        'cancel': 'inventory:device_type_list',
+        'create': 'device_model:device_type_create',
+        'delete': 'device_model:device_type_delete',
+        'update': 'device_model:device_type_update',
+        'cancel': 'device_model:device_type_list',
         'icon': 'fa fa-plus',
     }
 
@@ -106,18 +106,18 @@ class DeviceTypeDetailView(DetailView):
 
     path = [
         ("home", "account:index"),
-        ("device types", '/inventory/device_type_list'),
-        ("device type detail", "/inventory/device_type_view")
+        ("device types", '/device_model/device_type_list'),
+        ("device type detail", "/device_model/device_type_view")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Device Type Detail',
         'section_title': 'Device Type Detail',
         'breadcrumb_path': path,
-        'create': 'inventory:device_type_create',
-        'delete': 'inventory:device_type_delete',
-        'update': 'inventory:device_type_update',
-        'cancel': 'inventory:device_type_list',
+        'create': 'device_model:device_type_create',
+        'delete': 'device_model:device_type_delete',
+        'update': 'device_model:device_type_update',
+        'cancel': 'device_model:device_type_list',
         'icon': 'fa fa-cogs',
     }
 
@@ -133,23 +133,23 @@ class DeviceTypeDetailView(DetailView):
 
 class DeviceTypeDeleteView(DeleteView):
     model = DeviceType
-    success_url = reverse_lazy('inventory:device_type_list')
+    success_url = reverse_lazy('device_model:device_type_list')
     template_name = 'workflow/confirm_delete.html'
 
     path = [
         ("home", "account:index"),
-        ("device types", 'inventory/device_type_list'),
-        ("device type delete", "/inventory/device_type_delete")
+        ("device types", 'device_model/device_type_list'),
+        ("device type delete", "/device_model/device_type_delete")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Device Type Delete',
         'section_title': 'Device Type Delete',
         'breadcrumb_path': path,
-        'create': 'inventory:device_type_create',
-        'delete': 'inventory:device_type_delete',
-        'update': 'inventory:device_type_update',
-        'cancel': 'inventory:device_type_list',
+        'create': 'device_model:device_type_create',
+        'delete': 'device_model:device_type_delete',
+        'update': 'device_model:device_type_update',
+        'cancel': 'device_model:device_type_list',
         'icon': 'mdi-delete-variant',
     }
 
@@ -169,18 +169,18 @@ class SerdesTypeListView(ListView):
 
     path = [
         ("home", "account:index"),
-        ("serdes types", "/inventory/serdes_type_list/"),
-        ("serdes type list", "/inventory/serdes_type_list")
+        ("serdes types", "/device_model/serdes_type_list/"),
+        ("serdes type list", "/device_model/serdes_type_list")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Serdes Type',
         'section_title': 'Serdes Types',
         'breadcrumb_path': path,
-        'create': 'inventory:serdes_type_create',
-        'delete': 'inventory:serdes_type_delete',
-        'update': 'inventory:serdes_type_update',
-        'cancel': 'inventory:serdes_type_list',
+        'create': 'device_model:serdes_type_create',
+        'delete': 'device_model:serdes_type_delete',
+        'update': 'device_model:serdes_type_update',
+        'cancel': 'device_model:serdes_type_list',
         'icon': 'mdi-format-list-bulleted',
     }
 
@@ -201,18 +201,18 @@ class SerdesTypeUpdateView(UpdateView):
 
     path = [
         ("home", "account:index"),
-        ("serdes types", '/inventory/serdes_type_list'),
-        ("serdes type update", "/inventory/serdes_type_update")
+        ("serdes types", '/device_model/serdes_type_list'),
+        ("serdes type update", "/device_model/serdes_type_update")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Serdes Type Update',
         'section_title': 'Serdes Type Update',
         'breadcrumb_path': path,
-        'create': 'inventory:serdes_type_create',
-        'delete': 'inventory:serdes_type_delete',
-        'update': 'inventory:serdes_type_update',
-        'cancel': 'inventory:serdes_type_list',
+        'create': 'device_model:serdes_type_create',
+        'delete': 'device_model:serdes_type_delete',
+        'update': 'device_model:serdes_type_update',
+        'cancel': 'device_model:serdes_type_list',
         'icon': 'fa fa-edit',
     }
 
@@ -229,18 +229,18 @@ class SerdesTypeCreateView(CreateView):
 
     path = [
         ("home", "account:index"),
-        ("serdes types", '/inventory/serdes_type_list'),
-        ("serdes type create", "/inventory/serdes_type_create")
+        ("serdes types", '/device_model/serdes_type_list'),
+        ("serdes type create", "/device_model/serdes_type_create")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Serdes Type Create',
         'section_title': 'Serdes Type Create',
         'breadcrumb_path': path,
-        'create': 'inventory:serdes_type_create',
-        'delete': 'inventory:serdes_type_delete',
-        'update': 'inventory:serdes_type_update',
-        'cancel': 'inventory:serdes_type_list',
+        'create': 'device_model:serdes_type_create',
+        'delete': 'device_model:serdes_type_delete',
+        'update': 'device_model:serdes_type_update',
+        'cancel': 'device_model:serdes_type_list',
         'icon': 'fa fa-plus',
     }
 
@@ -256,18 +256,18 @@ class SerdesTypeDetailView(DetailView):
 
     path = [
         ("home", "account:index"),
-        ("serdes types", '/inventory/serdes_type_list'),
-        ("serdes type detail", "/inventory/serdes_type_view")
+        ("serdes types", '/device_model/serdes_type_list'),
+        ("serdes type detail", "/device_model/serdes_type_view")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Serdes Type Detail',
         'section_title': 'Serdes Type Detail',
         'breadcrumb_path': path,
-        'create': 'inventory:serdes_type_create',
-        'delete': 'inventory:serdes_type_delete',
-        'update': 'inventory:serdes_type_update',
-        'cancel': 'inventory:serdes_type_list',
+        'create': 'device_model:serdes_type_create',
+        'delete': 'device_model:serdes_type_delete',
+        'update': 'device_model:serdes_type_update',
+        'cancel': 'device_model:serdes_type_list',
         'icon': 'fa fa-cogs',
     }
 
@@ -279,28 +279,467 @@ class SerdesTypeDetailView(DetailView):
 
 class SerdesTypeDeleteView(DeleteView):
     model = SerdesType
-    success_url = reverse_lazy('inventory:serdes_type_list')
+    success_url = reverse_lazy('device_model:serdes_type_list')
     template_name = 'workflow/confirm_delete.html'
 
     path = [
         ("home", "account:index"),
-        ("serdes types", 'inventory/serdes_type_list'),
-        ("serdes type delete", "/inventory/serdes_type_delete")
+        ("serdes types", 'device_model/serdes_type_list'),
+        ("serdes type delete", "/device_model/serdes_type_delete")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Serdes Type Delete',
         'section_title': 'Serdes Type Delete',
         'breadcrumb_path': path,
-        'create': 'inventory:serdes_type_create',
-        'delete': 'inventory:serdes_type_delete',
-        'update': 'inventory:serdes_type_update',
-        'cancel': 'inventory:serdes_type_list',
+        'create': 'device_model:serdes_type_create',
+        'delete': 'device_model:serdes_type_delete',
+        'update': 'device_model:serdes_type_update',
+        'cancel': 'device_model:serdes_type_list',
         'icon': 'mdi-delete-variant',
     }
 
     def get_context_data(self, **kwargs):
         context = super(SerdesTypeDeleteView, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+
+# --------------------------------------------
+# SerDes Speed CRUD
+# --------------------------------------------
+# Create your views here.
+class SerdesSpeedListView(ListView):
+    model = SerdesSpeed
+    template_name = 'device_model/mac_list.html'
+
+    path = [
+        ("home", "account:index"),
+        ("serdes speeds", "/device_model/serdes_speed_list/"),
+        ("serdes speed list", "/device_model/serdes_speed_list")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Serdes Speed',
+        'section_title': 'Serdes Speeds',
+        'breadcrumb_path': path,
+        'create': 'device_model:serdes_speed_create',
+        'delete': 'device_model:serdes_speed_delete',
+        'update': 'device_model:serdes_speed_update',
+        'cancel': 'device_model:serdes_speed_list',
+        'icon': 'mdi-format-list-bulleted',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(SerdesSpeedListView, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+    def get_queryset(self):
+        queryset = SerdesSpeed.objects.all()
+        return queryset
+
+
+class SerdesSpeedUpdateView(UpdateView):
+    model = SerdesSpeed
+    form_class = SerdesSpeedForm
+    template_name = 'workflow/form.html'
+
+    path = [
+        ("home", "account:index"),
+        ("serdes speeds", '/device_model/serdes_speed_list'),
+        ("serdes speed update", "/device_model/serdes_speed_update")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Serdes Speed Update',
+        'section_title': 'Serdes Speed Update',
+        'breadcrumb_path': path,
+        'create': 'device_model:serdes_speed_create',
+        'delete': 'device_model:serdes_speed_delete',
+        'update': 'device_model:serdes_speed_update',
+        'cancel': 'device_model:serdes_speed_list',
+        'icon': 'fa fa-edit',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(SerdesSpeedUpdateView, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+
+class SerdesSpeedCreateView(CreateView):
+    model = SerdesSpeed
+    form_class = SerdesSpeedForm
+    template_name = 'workflow/form.html'
+
+    path = [
+        ("home", "account:index"),
+        ("serdes speeds", '/device_model/serdes_speed_list'),
+        ("serdes speed create", "/device_model/serdes_speed_create")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Serdes Speed Create',
+        'section_title': 'Serdes Speed Create',
+        'breadcrumb_path': path,
+        'create': 'device_model:serdes_speed_create',
+        'delete': 'device_model:serdes_speed_delete',
+        'update': 'device_model:serdes_speed_update',
+        'cancel': 'device_model:serdes_speed_list',
+        'icon': 'fa fa-plus',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(SerdesSpeedCreateView, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+
+class SerdesSpeedDetailView(DetailView):
+    model = SerdesSpeed
+    template_name = 'device_model/mac_detail.html'
+
+    path = [
+        ("home", "account:index"),
+        ("serdes speeds", '/device_model/serdes_speed_list'),
+        ("serdes speed detail", "/device_model/serdes_speed_view")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Serdes Speed Detail',
+        'section_title': 'Serdes Speed Detail',
+        'breadcrumb_path': path,
+        'create': 'device_model:serdes_speed_create',
+        'delete': 'device_model:serdes_speed_delete',
+        'update': 'device_model:serdes_speed_update',
+        'cancel': 'device_model:serdes_speed_list',
+        'icon': 'fa fa-cogs',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(SerdesSpeedDetailView, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+
+class SerdesSpeedDeleteView(DeleteView):
+    model = SerdesSpeed
+    success_url = reverse_lazy('device_model:serdes_speed_list')
+    template_name = 'workflow/confirm_delete.html'
+
+    path = [
+        ("home", "account:index"),
+        ("serdes speeds", 'device_model/serdes_speed_list'),
+        ("serdes speed delete", "/device_model/serdes_speed_delete")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Serdes Speed Delete',
+        'section_title': 'Serdes Speed Delete',
+        'breadcrumb_path': path,
+        'create': 'device_model:serdes_speed_create',
+        'delete': 'device_model:serdes_speed_delete',
+        'update': 'device_model:serdes_speed_update',
+        'cancel': 'device_model:serdes_speed_list',
+        'icon': 'mdi-delete-variant',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(SerdesSpeedDeleteView, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+
+# --------------------------------------------
+# Mac CRUD
+# --------------------------------------------
+# Create your views here.
+class MacListView(ListView):
+    model = Mac
+    template_name = 'device_model/mac_list.html'
+
+    path = [
+        ("home", "account:index"),
+        ("macs", "/device_model/mac_list/"),
+        ("mac list", "/device_model/mac_list")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Mac',
+        'section_title': 'Mac',
+        'breadcrumb_path': path,
+        'create': 'device_model:mac_create',
+        'delete': 'device_model:mac_delete',
+        'update': 'device_model:mac_update',
+        'cancel': 'device_model:mac_list',
+        'icon': 'mdi-format-list-bulleted',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(MacListView, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+    def get_queryset(self):
+        queryset = Mac.objects.all()
+        print(str(queryset))
+        return queryset
+
+
+class MacUpdateView(UpdateView):
+    model = Mac
+    form_class = MacForm
+    template_name = 'workflow/form.html'
+
+    path = [
+        ("home", "account:index"),
+        ("macs", '/device_model/mac_list'),
+        ("mac update", "/device_model/mac_update")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Mac Update',
+        'section_title': 'Mac Update',
+        'breadcrumb_path': path,
+        'create': 'device_model:mac_create',
+        'delete': 'device_model:mac_delete',
+        'update': 'device_model:mac_update',
+        'cancel': 'device_model:mac_list',
+        'icon': 'fa fa-edit',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(MacUpdateView, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+
+class MacCreateView(CreateView):
+    model = Mac
+    form_class = MacForm
+    template_name = 'workflow/form.html'
+
+    path = [
+        ("home", "account:index"),
+        ("macs", '/device_model/mac_list'),
+        ("mac create", "/device_model/mac_create")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Mac Create',
+        'section_title': 'Mac Create',
+        'breadcrumb_path': path,
+        'create': 'device_model:mac_create',
+        'delete': 'device_model:mac_delete',
+        'update': 'device_model:mac_update',
+        'cancel': 'device_model:mac_list',
+        'icon': 'fa fa-plus',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(MacCreateView, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+
+class MacDetailView(DetailView):
+    model = Mac
+    template_name = 'device_model/mac_detail.html'
+
+    path = [
+        ("home", "account:index"),
+        ("macs", '/device_model/mac_list'),
+        ("mac detail", "/device_model/mac_view")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Mac Detail',
+        'section_title': 'Mac Detail',
+        'breadcrumb_path': path,
+        'create': 'device_model:mac_create',
+        'delete': 'device_model:mac_delete',
+        'update': 'device_model:mac_update',
+        'cancel': 'device_model:mac_list',
+        'icon': 'fa fa-cogs',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(MacDetailView, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+
+class MacDeleteView(DeleteView):
+    model = Mac
+    success_url = reverse_lazy('device_model:mac_list')
+    template_name = 'workflow/confirm_delete.html'
+
+    path = [
+        ("home", "account:index"),
+        ("macs", 'device_model/mac_list'),
+        ("mac delete", "/device_model/mac_delete")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Mac Delete',
+        'section_title': 'Mac Delete',
+        'breadcrumb_path': path,
+        'create': 'device_model:mac_create',
+        'delete': 'device_model:mac_delete',
+        'update': 'device_model:mac_update',
+        'cancel': 'device_model:mac_list',
+        'icon': 'mdi-delete-variant',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(MacDeleteView, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+
+# --------------------------------------------
+# Chip CRUD
+# --------------------------------------------
+# Create your views here.
+class ChipListView(ListView):
+    model = Chip
+    template_name = 'device_model/chip_list.html'
+
+    path = [
+        ("home", "account:index"),
+        ("chips", "/device_model/chip_list/"),
+        ("chip list", "/device_model/chip_list")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Chip',
+        'section_title': 'Chip',
+        'breadcrumb_path': path,
+        'create': 'device_model:chip_create',
+        'delete': 'device_model:chip_delete',
+        'update': 'device_model:chip_update',
+        'cancel': 'device_model:chip_list',
+        'icon': 'mdi-format-list-bulleted',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(ChipListView, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+    def get_queryset(self):
+        queryset = Chip.objects.all()
+        return queryset
+
+
+class ChipUpdateView(UpdateView):
+    model = Chip
+    form_class = ChipForm
+    template_name = 'workflow/form.html'
+
+    path = [
+        ("home", "account:index"),
+        ("chips", '/device_model/chip_list'),
+        ("chip update", "/device_model/chip_update")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Chip Update',
+        'section_title': 'Chip Update',
+        'breadcrumb_path': path,
+        'create': 'device_model:chip_create',
+        'delete': 'device_model:chip_delete',
+        'update': 'device_model:chip_update',
+        'cancel': 'device_model:chip_list',
+        'icon': 'fa fa-edit',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(ChipUpdateView, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+
+class ChipCreateView(CreateView):
+    model = Chip
+    form_class = ChipForm
+    template_name = 'workflow/form.html'
+
+    path = [
+        ("home", "account:index"),
+        ("chips", '/device_model/chip_list'),
+        ("chip create", "/device_model/chip_create")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Chip Create',
+        'section_title': 'Chip Create',
+        'breadcrumb_path': path,
+        'create': 'device_model:chip_create',
+        'delete': 'device_model:chip_delete',
+        'update': 'device_model:chip_update',
+        'cancel': 'device_model:chip_list',
+        'icon': 'fa fa-plus',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(ChipCreateView, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+
+class ChipDetailView(DetailView):
+    model = Chip
+    template_name = 'device_model/chip_detail.html'
+
+    path = [
+        ("home", "account:index"),
+        ("chips", '/device_model/chip_list'),
+        ("chip detail", "/device_model/chip_view")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Chip Detail',
+        'section_title': 'Chip Detail',
+        'breadcrumb_path': path,
+        'create': 'device_model:chip_create',
+        'delete': 'device_model:chip_delete',
+        'update': 'device_model:chip_update',
+        'cancel': 'device_model:chip_list',
+        'icon': 'fa fa-cogs',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(ChipDetailView, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+
+class ChipDeleteView(DeleteView):
+    model = Chip
+    success_url = reverse_lazy('device_model:chip_list')
+    template_name = 'workflow/confirm_delete.html'
+
+    path = [
+        ("home", "account:index"),
+        ("chips", 'device_model/mac_list'),
+        ("chip delete", "/device_model/mac_delete")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Chip Delete',
+        'section_title': 'Chip Delete',
+        'breadcrumb_path': path,
+        'create': 'device_model:chip_create',
+        'delete': 'device_model:chip_delete',
+        'update': 'device_model:chip_update',
+        'cancel': 'device_model:chip_list',
+        'icon': 'mdi-delete-variant',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(ChipDeleteView, self).get_context_data(**kwargs)
         context.update(self.extra_context)
         return context
 
@@ -315,18 +754,18 @@ class SlotTypeListView(ListView):
 
     path = [
         ("home", "account:index"),
-        ("slot types", "/inventory/slot_type_list/"),
-        ("slot type list", "/inventory/slot_type_list")
+        ("slot types", "/device_model/slot_type_list/"),
+        ("slot type list", "/device_model/slot_type_list")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Slot Type',
         'section_title': 'Slot Types',
         'breadcrumb_path': path,
-        'create': 'inventory:slot_type_create',
-        'delete': 'inventory:slot_type_delete',
-        'update': 'inventory:slot_type_update',
-        'cancel': 'inventory:slot_type_list',
+        'create': 'device_model:slot_type_create',
+        'delete': 'device_model:slot_type_delete',
+        'update': 'device_model:slot_type_update',
+        'cancel': 'device_model:slot_type_list',
         'icon': 'mdi-format-list-bulleted',
     }
 
@@ -347,18 +786,18 @@ class SlotTypeUpdateView(UpdateView):
 
     path = [
         ("home", "account:index"),
-        ("slot types", '/inventory/slot_type_list'),
-        ("slot type update", "/inventory/slot_type_update")
+        ("slot types", '/device_model/slot_type_list'),
+        ("slot type update", "/device_model/slot_type_update")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Slot Type Update',
         'section_title': 'Slot Type Update',
         'breadcrumb_path': path,
-        'create': 'inventory:slot_type_create',
-        'delete': 'inventory:slot_type_delete',
-        'update': 'inventory:slot_type_update',
-        'cancel': 'inventory:slot_type_list',
+        'create': 'device_model:slot_type_create',
+        'delete': 'device_model:slot_type_delete',
+        'update': 'device_model:slot_type_update',
+        'cancel': 'device_model:slot_type_list',
         'icon': 'fa fa-edit',
     }
 
@@ -375,18 +814,18 @@ class SlotTypeCreateView(CreateView):
 
     path = [
         ("home", "account:index"),
-        ("slot types", '/inventory/slot_type_list'),
-        ("slot type create", "/inventory/slot_type_create")
+        ("slot types", '/device_model/slot_type_list'),
+        ("slot type create", "/device_model/slot_type_create")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Slot Type Create',
         'section_title': 'Slot Type Create',
         'breadcrumb_path': path,
-        'create': 'inventory:slot_type_create',
-        'delete': 'inventory:slot_type_delete',
-        'update': 'inventory:slot_type_update',
-        'cancel': 'inventory:slot_type_list',
+        'create': 'device_model:slot_type_create',
+        'delete': 'device_model:slot_type_delete',
+        'update': 'device_model:slot_type_update',
+        'cancel': 'device_model:slot_type_list',
         'icon': 'fa fa-plus',
     }
 
@@ -402,18 +841,18 @@ class SlotTypeDetailView(DetailView):
 
     path = [
         ("home", "account:index"),
-        ("slot types", '/inventory/slot_type_list'),
-        ("slot type detail", "/inventory/slot_type_view")
+        ("slot types", '/device_model/slot_type_list'),
+        ("slot type detail", "/device_model/slot_type_view")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Slot Type Detail',
         'section_title': 'Slot Type Detail',
         'breadcrumb_path': path,
-        'create': 'inventory:slot_type_create',
-        'delete': 'inventory:slot_type_delete',
-        'update': 'inventory:slot_type_update',
-        'cancel': 'inventory:slot_type_list',
+        'create': 'device_model:slot_type_create',
+        'delete': 'device_model:slot_type_delete',
+        'update': 'device_model:slot_type_update',
+        'cancel': 'device_model:slot_type_list',
         'icon': 'fa fa-cogs',
     }
 
@@ -429,23 +868,23 @@ class SlotTypeDetailView(DetailView):
 
 class SlotTypeDeleteView(DeleteView):
     model = SlotType
-    success_url = reverse_lazy('inventory:slot_type_list')
+    success_url = reverse_lazy('device_model:slot_type_list')
     template_name = 'workflow/confirm_delete.html'
 
     path = [
         ("home", "account:index"),
-        ("device types", 'inventory/slot_type_list'),
-        ("device type delete", "/inventory/slot_type_delete")
+        ("device types", 'device_model/slot_type_list'),
+        ("device type delete", "/device_model/slot_type_delete")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Slot Type Delete',
         'section_title': 'Slot Type Delete',
         'breadcrumb_path': path,
-        'create': 'inventory:slot_type_create',
-        'delete': 'inventory:slot_type_delete',
-        'update': 'inventory:slot_type_update',
-        'cancel': 'inventory:slot_type_list',
+        'create': 'device_model:slot_type_create',
+        'delete': 'device_model:slot_type_delete',
+        'update': 'device_model:slot_type_update',
+        'cancel': 'device_model:slot_type_list',
         'icon': 'mdi-delete-variant',
     }
 
@@ -465,18 +904,18 @@ class ModuleTypeListView(ListView):
 
     path = [
         ("home", "account:index"),
-        ("module types", "/inventory/module_type_list/"),
-        ("module type list", "/inventory/module_type_list")
+        ("module types", "/device_model/module_type_list/"),
+        ("module type list", "/device_model/module_type_list")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Module Type',
         'section_title': 'Module Types',
         'breadcrumb_path': path,
-        'create': 'inventory:module_type_create',
-        'delete': 'inventory:module_type_delete',
-        'update': 'inventory:module_type_update',
-        'cancel': 'inventory:module_type_list',
+        'create': 'device_model:module_type_create',
+        'delete': 'device_model:module_type_delete',
+        'update': 'device_model:module_type_update',
+        'cancel': 'device_model:module_type_list',
         'icon': 'mdi-format-list-bulleted',
     }
 
@@ -497,18 +936,18 @@ class ModuleTypeUpdateView(UpdateView):
 
     path = [
         ("home", "account:index"),
-        ("module types", '/inventory/module_type_list'),
-        ("module type update", "/inventory/module_type_update")
+        ("module types", '/device_model/module_type_list'),
+        ("module type update", "/device_model/module_type_update")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Module Type Update',
         'section_title': 'Module Type Update',
         'breadcrumb_path': path,
-        'create': 'inventory:module_type_create',
-        'delete': 'inventory:module_type_delete',
-        'update': 'inventory:module_type_update',
-        'cancel': 'inventory:module_type_list',
+        'create': 'device_model:module_type_create',
+        'delete': 'device_model:module_type_delete',
+        'update': 'device_model:module_type_update',
+        'cancel': 'device_model:module_type_list',
         'icon': 'fa fa-edit',
     }
 
@@ -525,18 +964,18 @@ class ModuleTypeCreateView(CreateView):
 
     path = [
         ("home", "account:index"),
-        ("module types", '/inventory/module_type_list'),
-        ("module type create", "/inventory/module_type_create")
+        ("module types", '/device_model/module_type_list'),
+        ("module type create", "/device_model/module_type_create")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Module Type Create',
         'section_title': 'Module Type Create',
         'breadcrumb_path': path,
-        'create': 'inventory:module_type_create',
-        'delete': 'inventory:module_type_delete',
-        'update': 'inventory:module_type_update',
-        'cancel': 'inventory:module_type_list',
+        'create': 'device_model:module_type_create',
+        'delete': 'device_model:module_type_delete',
+        'update': 'device_model:module_type_update',
+        'cancel': 'device_model:module_type_list',
         'icon': 'fa fa-plus',
     }
 
@@ -552,18 +991,18 @@ class ModuleTypeDetailView(DetailView):
 
     path = [
         ("home", "account:index"),
-        ("module types", '/inventory/module_type_list'),
-        ("module type detail", "/inventory/module_type_view")
+        ("module types", '/device_model/module_type_list'),
+        ("module type detail", "/device_model/module_type_view")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Module Type Detail',
         'section_title': 'Module Type Detail',
         'breadcrumb_path': path,
-        'create': 'inventory:module_type_create',
-        'delete': 'inventory:module_type_delete',
-        'update': 'inventory:module_type_update',
-        'cancel': 'inventory:module_type_list',
+        'create': 'device_model:module_type_create',
+        'delete': 'device_model:module_type_delete',
+        'update': 'device_model:module_type_update',
+        'cancel': 'device_model:module_type_list',
         'icon': 'fa fa-cogs',
     }
 
@@ -575,23 +1014,23 @@ class ModuleTypeDetailView(DetailView):
 
 class ModuleTypeDeleteView(DeleteView):
     model = ModuleType
-    success_url = reverse_lazy('inventory:module_type_list')
+    success_url = reverse_lazy('device_model:module_type_list')
     template_name = 'workflow/confirm_delete.html'
 
     path = [
         ("home", "account:index"),
-        ("module types", 'inventory/module_type_list'),
-        ("module type delete", "/inventory/module_type_delete")
+        ("module types", 'device_model/module_type_list'),
+        ("module type delete", "/device_model/module_type_delete")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Module Type Delete',
         'section_title': 'Module Type Delete',
         'breadcrumb_path': path,
-        'create': 'inventory:module_type_create',
-        'delete': 'inventory:module_type_delete',
-        'update': 'inventory:module_type_update',
-        'cancel': 'inventory:module_type_list',
+        'create': 'device_model:module_type_create',
+        'delete': 'device_model:module_type_delete',
+        'update': 'device_model:module_type_update',
+        'cancel': 'device_model:module_type_list',
         'icon': 'mdi-delete-variant',
     }
 
@@ -611,18 +1050,18 @@ class ChipTypeListView(ListView):
 
     path = [
         ("home", "account:index"),
-        ("chip types", "/inventory/chip_type_list/"),
-        ("chip type list", "/inventory/chip_type_list")
+        ("chip types", "/device_model/chip_type_list/"),
+        ("chip type list", "/device_model/chip_type_list")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Chip Type',
         'section_title': 'Chip Types',
         'breadcrumb_path': path,
-        'create': 'inventory:chip_type_create',
-        'delete': 'inventory:chip_type_delete',
-        'update': 'inventory:chip_type_update',
-        'cancel': 'inventory:chip_type_list',
+        'create': 'device_model:chip_type_create',
+        'delete': 'device_model:chip_type_delete',
+        'update': 'device_model:chip_type_update',
+        'cancel': 'device_model:chip_type_list',
         'icon': 'mdi-format-list-bulleted',
     }
 
@@ -643,18 +1082,18 @@ class ChipTypeUpdateView(UpdateView):
 
     path = [
         ("home", "account:index"),
-        ("chip types", '/inventory/chip_type_list'),
-        ("chip type update", "/inventory/chip_type_update")
+        ("chip types", '/device_model/chip_type_list'),
+        ("chip type update", "/device_model/chip_type_update")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Chip Type Update',
         'section_title': 'Chip Type Update',
         'breadcrumb_path': path,
-        'create': 'inventory:chip_type_create',
-        'delete': 'inventory:chip_type_delete',
-        'update': 'inventory:chip_type_update',
-        'cancel': 'inventory:chip_type_list',
+        'create': 'device_model:chip_type_create',
+        'delete': 'device_model:chip_type_delete',
+        'update': 'device_model:chip_type_update',
+        'cancel': 'device_model:chip_type_list',
         'icon': 'fa fa-edit',
     }
 
@@ -671,18 +1110,18 @@ class ChipTypeCreateView(CreateView):
 
     path = [
         ("home", "account:index"),
-        ("chip types", '/inventory/chip_type_list'),
-        ("chip type create", "/inventory/chip_type_create")
+        ("chip types", '/device_model/chip_type_list'),
+        ("chip type create", "/device_model/chip_type_create")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Chip Type Create',
         'section_title': 'Chip Type Create',
         'breadcrumb_path': path,
-        'create': 'inventory:chip_type_create',
-        'delete': 'inventory:chip_type_delete',
-        'update': 'inventory:chip_type_update',
-        'cancel': 'inventory:chip_type_list',
+        'create': 'device_model:chip_type_create',
+        'delete': 'device_model:chip_type_delete',
+        'update': 'device_model:chip_type_update',
+        'cancel': 'device_model:chip_type_list',
         'icon': 'fa fa-plus',
     }
 
@@ -698,18 +1137,18 @@ class ChipTypeDetailView(DetailView):
 
     path = [
         ("home", "account:index"),
-        ("chip types", '/inventory/chip_type_list'),
-        ("chip type detail", "/inventory/chip_type_view")
+        ("chip types", '/device_model/chip_type_list'),
+        ("chip type detail", "/device_model/chip_type_view")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Chip Type Detail',
         'section_title': 'Chip Type Detail',
         'breadcrumb_path': path,
-        'create': 'inventory:chip_type_create',
-        'delete': 'inventory:chip_type_delete',
-        'update': 'inventory:chip_type_update',
-        'cancel': 'inventory:chip_type_list',
+        'create': 'device_model:chip_type_create',
+        'delete': 'device_model:chip_type_delete',
+        'update': 'device_model:chip_type_update',
+        'cancel': 'device_model:chip_type_list',
         'icon': 'fa fa-cogs',
     }
 
@@ -721,23 +1160,23 @@ class ChipTypeDetailView(DetailView):
 
 class ChipTypeDeleteView(DeleteView):
     model = ChipType
-    success_url = reverse_lazy('inventory:chip_type_list')
+    success_url = reverse_lazy('device_model:chip_type_list')
     template_name = 'workflow/confirm_delete.html'
 
     path = [
         ("home", "account:index"),
-        ("chip types", 'inventory/chip_type_list'),
-        ("chip type delete", "/inventory/chip_type_delete")
+        ("chip types", 'device_model/chip_type_list'),
+        ("chip type delete", "/device_model/chip_type_delete")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Chip Type Delete',
         'section_title': 'Chip Type Delete',
         'breadcrumb_path': path,
-        'create': 'inventory:chip_type_create',
-        'delete': 'inventory:chip_type_delete',
-        'update': 'inventory:chip_type_update',
-        'cancel': 'inventory:chip_type_list',
+        'create': 'device_model:chip_type_create',
+        'delete': 'device_model:chip_type_delete',
+        'update': 'device_model:chip_type_update',
+        'cancel': 'device_model:chip_type_list',
         'icon': 'mdi-delete-variant',
     }
 
@@ -760,18 +1199,18 @@ class DeviceModelNoListView(ListView):
 
     path = [
         ("home", "account:index"),
-        ("device model numbers", "/inventory/device_model_no_list/"),
-        ("device model numbers list", "/inventory/device_model_no_list")
+        ("device model numbers", "/device_model/device_model_no_list/"),
+        ("device model numbers list", "/device_model/device_model_no_list")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Device Model Number',
         'section_title': 'Device Model Numbers',
         'breadcrumb_path': path,
-        'create': 'inventory:device_model_no_create',
-        'delete': 'inventory:device_model_no_delete',
-        'update': 'inventory:device_model_no_update',
-        'cancel': 'inventory:device_model_no_list',
+        'create': 'device_model:device_model_no_create',
+        'delete': 'device_model:device_model_no_delete',
+        'update': 'device_model:device_model_no_update',
+        'cancel': 'device_model:device_model_no_list',
         'icon': 'mdi-format-list-bulleted',
     }
 
@@ -792,18 +1231,18 @@ class DeviceModelNoUpdateView(UpdateView):
 
     path = [
         ("home", "account:index"),
-        ("device model numbers", '/inventory/device_model_no_list'),
-        ("device model number update", "/inventory/device_model_no_update")
+        ("device model numbers", '/device_model/device_model_no_list'),
+        ("device model number update", "/device_model/device_model_no_update")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Device Model Number Update',
         'section_title': 'Device Model Number Update',
         'breadcrumb_path': path,
-        'create': 'inventory:device_model_no_create',
-        'delete': 'inventory:device_model_no_delete',
-        'update': 'inventory:device_model_no_update',
-        'cancel': 'inventory:device_model_no_list',
+        'create': 'device_model:device_model_no_create',
+        'delete': 'device_model:device_model_no_delete',
+        'update': 'device_model:device_model_no_update',
+        'cancel': 'device_model:device_model_no_list',
         'icon': 'fa fa-edit',
     }
 
@@ -820,18 +1259,18 @@ class DeviceModelNoCreateView(CreateView):
 
     path = [
         ("home", "account:index"),
-        ("device model numbers", '/inventory/device_model_no_list'),
-        ("device model number create", "/inventory/device_model_no_create")
+        ("device model numbers", '/device_model/device_model_no_list'),
+        ("device model number create", "/device_model/device_model_no_create")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Device Model Number Create',
         'section_title': 'Device Model Number Create',
         'breadcrumb_path': path,
-        'create': 'inventory:device_model_no_create',
-        'delete': 'inventory:device_model_no_delete',
-        'update': 'inventory:device_model_no_update',
-        'cancel': 'inventory:device_model_no_list',
+        'create': 'device_model:device_model_no_create',
+        'delete': 'device_model:device_model_no_delete',
+        'update': 'device_model:device_model_no_update',
+        'cancel': 'device_model:device_model_no_list',
         'icon': 'fa fa-plus',
     }
 
@@ -847,18 +1286,18 @@ class DeviceModelNoDetailView(DetailView):
 
     path = [
         ("home", "account:index"),
-        ("device model numbers", '/inventory/device_model_no_list'),
-        ("device model number detail", "/inventory/device_model_no_view")
+        ("device model numbers", '/device_model/device_model_no_list'),
+        ("device model number detail", "/device_model/device_model_no_view")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Device Model Number Detail',
         'section_title': 'Device Model Number Detail',
         'breadcrumb_path': path,
-        'create': 'inventory:device_model_no_create',
-        'delete': 'inventory:device_model_no_delete',
-        'update': 'inventory:device_model_no_update',
-        'cancel': 'inventory:device_model_no_list',
+        'create': 'device_model:device_model_no_create',
+        'delete': 'device_model:device_model_no_delete',
+        'update': 'device_model:device_model_no_update',
+        'cancel': 'device_model:device_model_no_list',
         'icon': 'fa fa-cogs',
     }
 
@@ -870,23 +1309,23 @@ class DeviceModelNoDetailView(DetailView):
 
 class DeviceModelNoDeleteView(DeleteView):
     model = DeviceModelNo
-    success_url = reverse_lazy('inventory:device_model_no_list')
+    success_url = reverse_lazy('device_model:device_model_no_list')
     template_name = 'workflow/confirm_delete.html'
 
     path = [
         ("home", "account:index"),
-        ("device model numbers", 'inventory/device_model_no_list'),
-        ("device model number delete", "/inventory/device_model_no_delete")
+        ("device model numbers", 'device_model/device_model_no_list'),
+        ("device model number delete", "/device_model/device_model_no_delete")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Device Model Number Delete',
         'section_title': 'Device Model Number Delete',
         'breadcrumb_path': path,
-        'create': 'inventory:device_model_no_create',
-        'delete': 'inventory:device_model_no_delete',
-        'update': 'inventory:device_model_no_update',
-        'cancel': 'inventory:device_model_no_list',
+        'create': 'device_model:device_model_no_create',
+        'delete': 'device_model:device_model_no_delete',
+        'update': 'device_model:device_model_no_update',
+        'cancel': 'device_model:device_model_no_list',
         'icon': 'mdi-delete-variant',
     }
 
@@ -906,18 +1345,18 @@ class SlotModelNoListView(ListView):
 
     path = [
         ("home", "account:index"),
-        ("slot model numbers", "/inventory/slot_model_no_list/"),
-        ("slot model number list", "/inventory/slot_model_no_list")
+        ("slot model numbers", "/device_model/slot_model_no_list/"),
+        ("slot model number list", "/device_model/slot_model_no_list")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Slot Model Number',
         'section_title': 'Slot Model Numbers',
         'breadcrumb_path': path,
-        'create': 'inventory:slot_model_no_create',
-        'delete': 'inventory:slot_model_no_delete',
-        'update': 'inventory:slot_model_no_update',
-        'cancel': 'inventory:slot_model_no_list',
+        'create': 'device_model:slot_model_no_create',
+        'delete': 'device_model:slot_model_no_delete',
+        'update': 'device_model:slot_model_no_update',
+        'cancel': 'device_model:slot_model_no_list',
         'icon': 'mdi-format-list-bulleted',
     }
 
@@ -938,18 +1377,18 @@ class SlotModelNoUpdateView(UpdateView):
 
     path = [
         ("home", "account:index"),
-        ("slot model numbers", '/inventory/slot_model_no_list'),
-        ("slot model number update", "/inventory/slot_model_no_update")
+        ("slot model numbers", '/device_model/slot_model_no_list'),
+        ("slot model number update", "/device_model/slot_model_no_update")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Slot Model Number Update',
         'section_title': 'Slot Model Number Update',
         'breadcrumb_path': path,
-        'create': 'inventory:slot_model_no_create',
-        'delete': 'inventory:slot_model_no_delete',
-        'update': 'inventory:slot_model_no_update',
-        'cancel': 'inventory:slot_model_no_list',
+        'create': 'device_model:slot_model_no_create',
+        'delete': 'device_model:slot_model_no_delete',
+        'update': 'device_model:slot_model_no_update',
+        'cancel': 'device_model:slot_model_no_list',
         'icon': 'fa fa-edit',
     }
 
@@ -966,18 +1405,18 @@ class SlotModelNoCreateView(CreateView):
 
     path = [
         ("home", "account:index"),
-        ("slot model numbers", '/inventory/slot_model_no_list'),
-        ("slot model number create", "/inventory/slot_model_no_create")
+        ("slot model numbers", '/device_model/slot_model_no_list'),
+        ("slot model number create", "/device_model/slot_model_no_create")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Slot Model Number Create',
         'section_title': 'Slot Model Number Create',
         'breadcrumb_path': path,
-        'create': 'inventory:slot_model_no_create',
-        'delete': 'inventory:slot_model_no_delete',
-        'update': 'inventory:slot_model_no_update',
-        'cancel': 'inventory:slot_model_no_list',
+        'create': 'device_model:slot_model_no_create',
+        'delete': 'device_model:slot_model_no_delete',
+        'update': 'device_model:slot_model_no_update',
+        'cancel': 'device_model:slot_model_no_list',
         'icon': 'fa fa-plus',
     }
 
@@ -993,18 +1432,18 @@ class SlotModelNoDetailView(DetailView):
 
     path = [
         ("home", "account:index"),
-        ("slot model numbers", '/inventory/slot_model_no_list'),
-        ("slot model number detail", "/inventory/slot_model_no_view")
+        ("slot model numbers", '/device_model/slot_model_no_list'),
+        ("slot model number detail", "/device_model/slot_model_no_view")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Slot Model Number Detail',
         'section_title': 'Slot Model Number Detail',
         'breadcrumb_path': path,
-        'create': 'inventory:slot_model_no_create',
-        'delete': 'inventory:slot_model_no_delete',
-        'update': 'inventory:slot_model_no_update',
-        'cancel': 'inventory:slot_model_no_list',
+        'create': 'device_model:slot_model_no_create',
+        'delete': 'device_model:slot_model_no_delete',
+        'update': 'device_model:slot_model_no_update',
+        'cancel': 'device_model:slot_model_no_list',
         'icon': 'fa fa-cogs',
     }
 
@@ -1016,23 +1455,23 @@ class SlotModelNoDetailView(DetailView):
 
 class SlotModelNoDeleteView(DeleteView):
     model = SlotModelNo
-    success_url = reverse_lazy('inventory:slot_model_no_list')
+    success_url = reverse_lazy('device_model:slot_model_no_list')
     template_name = 'workflow/confirm_delete.html'
 
     path = [
         ("home", "account:index"),
-        ("device model numbers", 'inventory/slot_model_no_list'),
-        ("device model numbers delete", "/inventory/slot_model_no_delete")
+        ("device model numbers", 'device_model/slot_model_no_list'),
+        ("device model numbers delete", "/device_model/slot_model_no_delete")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Slot Model Number Delete',
         'section_title': 'Slot Model Number Delete',
         'breadcrumb_path': path,
-        'create': 'inventory:slot_model_no_create',
-        'delete': 'inventory:slot_model_no_delete',
-        'update': 'inventory:slot_model_no_update',
-        'cancel': 'inventory:slot_model_no_list',
+        'create': 'device_model:slot_model_no_create',
+        'delete': 'device_model:slot_model_no_delete',
+        'update': 'device_model:slot_model_no_update',
+        'cancel': 'device_model:slot_model_no_list',
         'icon': 'mdi-delete-variant',
     }
 
@@ -1052,18 +1491,18 @@ class ModuleBuildModelNoListView(ListView):
 
     path = [
         ("home", "account:index"),
-        ("module types", "/inventory/module_build_model_no_list/"),
-        ("module type list", "/inventory/module_build_model_no_list")
+        ("module types", "/device_model/module_build_model_no_list/"),
+        ("module type list", "/device_model/module_build_model_no_list")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Module Build Model Number',
         'section_title': 'Module Build Model Number',
         'breadcrumb_path': path,
-        'create': 'inventory:module_build_model_no_create',
-        'delete': 'inventory:module_build_model_no_delete',
-        'update': 'inventory:module_build_model_no_update',
-        'cancel': 'inventory:module_build_model_no_list',
+        'create': 'device_model:module_build_model_no_create',
+        'delete': 'device_model:module_build_model_no_delete',
+        'update': 'device_model:module_build_model_no_update',
+        'cancel': 'device_model:module_build_model_no_list',
         'icon': 'mdi-format-list-bulleted',
     }
 
@@ -1084,18 +1523,18 @@ class ModuleBuildModelNoUpdateView(UpdateView):
 
     path = [
         ("home", "account:index"),
-        ("module build model numbers", '/inventory/module_build_model_no_list'),
-        ("module build model number update", "/inventory/module_build_model_no_update")
+        ("module build model numbers", '/device_model/module_build_model_no_list'),
+        ("module build model number update", "/device_model/module_build_model_no_update")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Module Build Model Number Update',
         'section_title': 'Module Build Model Number Update',
         'breadcrumb_path': path,
-        'create': 'inventory:module_build_model_no_create',
-        'delete': 'inventory:module_build_model_no_delete',
-        'update': 'inventory:module_build_model_no_update',
-        'cancel': 'inventory:module_build_model_no_list',
+        'create': 'device_model:module_build_model_no_create',
+        'delete': 'device_model:module_build_model_no_delete',
+        'update': 'device_model:module_build_model_no_update',
+        'cancel': 'device_model:module_build_model_no_list',
         'icon': 'fa fa-edit',
     }
 
@@ -1112,18 +1551,18 @@ class ModuleBuildModelNoCreateView(CreateView):
 
     path = [
         ("home", "account:index"),
-        ("module build model numbers", '/inventory/module_build_model_no_list'),
-        ("module build model number create", "/inventory/module_build_model_no_create")
+        ("module build model numbers", '/device_model/module_build_model_no_list'),
+        ("module build model number create", "/device_model/module_build_model_no_create")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Module Build Model Number Create',
         'section_title': 'Module Build Model Number Create',
         'breadcrumb_path': path,
-        'create': 'inventory:module_build_model_no_create',
-        'delete': 'inventory:module_build_model_no_delete',
-        'update': 'inventory:module_build_model_no_update',
-        'cancel': 'inventory:module_build_model_no_list',
+        'create': 'device_model:module_build_model_no_create',
+        'delete': 'device_model:module_build_model_no_delete',
+        'update': 'device_model:module_build_model_no_update',
+        'cancel': 'device_model:module_build_model_no_list',
         'icon': 'fa fa-plus',
     }
 
@@ -1139,18 +1578,18 @@ class ModuleBuildModelNoDetailView(DetailView):
 
     path = [
         ("home", "account:index"),
-        ("module build model numbers", '/inventory/module_build_model_no_list'),
-        ("module build model number detail", "/inventory/module_build_model_no_view")
+        ("module build model numbers", '/device_model/module_build_model_no_list'),
+        ("module build model number detail", "/device_model/module_build_model_no_view")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Module Build Model Number Detail',
         'section_title': 'Module Build Model Number Detail',
         'breadcrumb_path': path,
-        'create': 'inventory:module_build_model_no_create',
-        'delete': 'inventory:module_build_model_no_delete',
-        'update': 'inventory:module_build_model_no_update',
-        'cancel': 'inventory:module_build_model_no_list',
+        'create': 'device_model:module_build_model_no_create',
+        'delete': 'device_model:module_build_model_no_delete',
+        'update': 'device_model:module_build_model_no_update',
+        'cancel': 'device_model:module_build_model_no_list',
         'icon': 'fa fa-cogs',
     }
 
@@ -1162,23 +1601,23 @@ class ModuleBuildModelNoDetailView(DetailView):
 
 class ModuleBuildModelNoDeleteView(DeleteView):
     model = ModuleBuildModelNo
-    success_url = reverse_lazy('inventory:module_build_model_no_list')
+    success_url = reverse_lazy('device_model:module_build_model_no_list')
     template_name = 'workflow/confirm_delete.html'
 
     path = [
         ("home", "account:index"),
-        ("module build model numbers", 'inventory/module_build_model_no_list'),
-        ("module build model number delete", "/inventory/module_build_model_no_delete")
+        ("module build model numbers", 'device_model/module_build_model_no_list'),
+        ("module build model number delete", "/device_model/module_build_model_no_delete")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Module Build Model Number Delete',
         'section_title': 'Module Build Model Number Delete',
         'breadcrumb_path': path,
-        'create': 'inventory:module_build_model_no_create',
-        'delete': 'inventory:module_build_model_no_delete',
-        'update': 'inventory:module_build_model_no_update',
-        'cancel': 'inventory:module_build_model_no_list',
+        'create': 'device_model:module_build_model_no_create',
+        'delete': 'device_model:module_build_model_no_delete',
+        'update': 'device_model:module_build_model_no_update',
+        'cancel': 'device_model:module_build_model_no_list',
         'icon': 'mdi-delete-variant',
     }
 
@@ -1198,18 +1637,18 @@ class ChipModelNoListView(ListView):
 
     path = [
         ("home", "account:index"),
-        ("chip model numbers", "/inventory/chip_model_no_list/"),
-        ("chip model number list", "/inventory/chip_model_no_list")
+        ("chip model numbers", "/device_model/chip_model_no_list/"),
+        ("chip model number list", "/device_model/chip_model_no_list")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Chip Model Number',
         'section_title': 'Chip Model Numbers',
         'breadcrumb_path': path,
-        'create': 'inventory:chip_model_no_create',
-        'delete': 'inventory:chip_model_no_delete',
-        'update': 'inventory:chip_model_no_update',
-        'cancel': 'inventory:chip_model_no_list',
+        'create': 'device_model:chip_model_no_create',
+        'delete': 'device_model:chip_model_no_delete',
+        'update': 'device_model:chip_model_no_update',
+        'cancel': 'device_model:chip_model_no_list',
         'icon': 'mdi-format-list-bulleted',
     }
 
@@ -1230,18 +1669,18 @@ class ChipModelNoUpdateView(UpdateView):
 
     path = [
         ("home", "account:index"),
-        ("chip model numbers", '/inventory/chip_model_no_list'),
-        ("chip model number update", "/inventory/chip_model_no_update")
+        ("chip model numbers", '/device_model/chip_model_no_list'),
+        ("chip model number update", "/device_model/chip_model_no_update")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Chip Model Number Update',
         'section_title': 'Chip Model Number Update',
         'breadcrumb_path': path,
-        'create': 'inventory:chip_model_no_create',
-        'delete': 'inventory:chip_model_no_delete',
-        'update': 'inventory:chip_model_no_update',
-        'cancel': 'inventory:chip_model_no_list',
+        'create': 'device_model:chip_model_no_create',
+        'delete': 'device_model:chip_model_no_delete',
+        'update': 'device_model:chip_model_no_update',
+        'cancel': 'device_model:chip_model_no_list',
         'icon': 'fa fa-edit',
     }
 
@@ -1258,18 +1697,18 @@ class ChipModelNoCreateView(CreateView):
 
     path = [
         ("home", "account:index"),
-        ("chip model numbers", '/inventory/chip_model_no_list'),
-        ("chip model number create", "/inventory/chip_model_no_create")
+        ("chip model numbers", '/device_model/chip_model_no_list'),
+        ("chip model number create", "/device_model/chip_model_no_create")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Chip Model Number Create',
         'section_title': 'Chip Model Number Create',
         'breadcrumb_path': path,
-        'create': 'inventory:chip_model_no_create',
-        'delete': 'inventory:chip_model_no_delete',
-        'update': 'inventory:chip_model_no_update',
-        'cancel': 'inventory:chip_model_no_list',
+        'create': 'device_model:chip_model_no_create',
+        'delete': 'device_model:chip_model_no_delete',
+        'update': 'device_model:chip_model_no_update',
+        'cancel': 'device_model:chip_model_no_list',
         'icon': 'fa fa-plus',
     }
 
@@ -1285,18 +1724,18 @@ class ChipModelNoDetailView(DetailView):
 
     path = [
         ("home", "account:index"),
-        ("chip model numbers", '/inventory/chip_model_no_list'),
-        ("chip model number detail", "/inventory/chip_model_no_view")
+        ("chip model numbers", '/device_model/chip_model_no_list'),
+        ("chip model number detail", "/device_model/chip_model_no_view")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Chip Model Number Detail',
         'section_title': 'Chip Model Number Detail',
         'breadcrumb_path': path,
-        'create': 'inventory:chip_model_no_create',
-        'delete': 'inventory:chip_model_no_delete',
-        'update': 'inventory:chip_model_no_update',
-        'cancel': 'inventory:chip_model_no_list',
+        'create': 'device_model:chip_model_no_create',
+        'delete': 'device_model:chip_model_no_delete',
+        'update': 'device_model:chip_model_no_update',
+        'cancel': 'device_model:chip_model_no_list',
         'icon': 'fa fa-cogs',
     }
 
@@ -1308,23 +1747,23 @@ class ChipModelNoDetailView(DetailView):
 
 class ChipModelNoDeleteView(DeleteView):
     model = ChipModelNo
-    success_url = reverse_lazy('inventory:chip_model_no_list')
+    success_url = reverse_lazy('device_model:chip_model_no_list')
     template_name = 'workflow/confirm_delete.html'
 
     path = [
         ("home", "account:index"),
-        ("chip model number", 'inventory/module_model_no_list'),
-        ("chip model number delete", "/inventory/module_model_no_delete")
+        ("chip model number", 'device_model/module_model_no_list'),
+        ("chip model number delete", "/device_model/module_model_no_delete")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Chip Model Number Delete',
         'section_title': 'Chip Model Number Delete',
         'breadcrumb_path': path,
-        'create': 'inventory:chip_model_no_create',
-        'delete': 'inventory:chip_model_no_delete',
-        'update': 'inventory:chip_model_no_update',
-        'cancel': 'inventory:chip_model_no_list',
+        'create': 'device_model:chip_model_no_create',
+        'delete': 'device_model:chip_model_no_delete',
+        'update': 'device_model:chip_model_no_update',
+        'cancel': 'device_model:chip_model_no_list',
         'icon': 'mdi-delete-variant',
     }
 
@@ -1343,18 +1782,18 @@ class DeviceModelListView(ListView):
 
     path = [
         ("home", "account:index"),
-        ("chip model numbers", "/inventory/chip_model_no_list/"),
-        ("chip model number list", "/inventory/chip_model_no_list")
+        ("chip model numbers", "/device_model/chip_model_no_list/"),
+        ("chip model number list", "/device_model/chip_model_no_list")
     ]
 
     extra_context = {
         'breadcrumb_title': 'Chip Model Number',
         'section_title': 'Chip Model Numbers',
         'breadcrumb_path': path,
-        'create': 'inventory:chip_model_no_create',
-        'delete': 'inventory:chip_model_no_delete',
-        'update': 'inventory:chip_model_no_update',
-        'cancel': 'inventory:chip_model_no_list',
+        'create': 'device_model:chip_model_no_create',
+        'delete': 'device_model:chip_model_no_delete',
+        'update': 'device_model:chip_model_no_update',
+        'cancel': 'device_model:chip_model_no_list',
         'icon': 'mdi-format-list-bulleted',
     }
 

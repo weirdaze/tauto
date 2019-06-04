@@ -17,6 +17,24 @@ urlpatterns = [
     url(r'^serdes_type_view/(?P<pk>\d+)$', views.SerdesTypeDetailView.as_view(), name='serdes_type_view'),
     url(r'^serdes_type_delete/(?P<pk>\d+)$', views.SerdesTypeDeleteView.as_view(), name='serdes_type_delete'),
 
+    url(r'^serdes_speed_list/$', views.SerdesSpeedListView.as_view(), name='serdes_speed_list'),
+    url(r'^serdes_speed_create/$', views.SerdesSpeedCreateView.as_view(), name='serdes_speed_create'),
+    url(r'^serdes_speed_update/(?P<pk>\d+)$', views.SerdesSpeedUpdateView.as_view(), name='serdes_speed_update'),
+    url(r'^serdes_speed_view/(?P<pk>\d+)$', views.SerdesSpeedDetailView.as_view(), name='serdes_speed_view'),
+    url(r'^serdes_speed_delete/(?P<pk>\d+)$', views.SerdesSpeedDeleteView.as_view(), name='serdes_speed_delete'),
+
+    url(r'^mac_list/$', views.MacListView.as_view(), name='mac_list'),
+    url(r'^mac_create/$', views.MacCreateView.as_view(), name='mac_create'),
+    url(r'^mac_update/(?P<pk>\d+)$', views.MacUpdateView.as_view(), name='mac_update'),
+    url(r'^mac_view/(?P<pk>\d+)$', views.MacDetailView.as_view(), name='mac_view'),
+    url(r'^mac_delete/(?P<pk>\d+)$', views.MacDeleteView.as_view(), name='mac_delete'),
+
+    url(r'^chip_list/$', views.ChipListView.as_view(), name='chip_list'),
+    url(r'^chip_create/$', views.ChipCreateView.as_view(), name='chip_create'),
+    url(r'^chip_update/(?P<pk>\d+)$', views.ChipUpdateView.as_view(), name='chip_update'),
+    url(r'^chip_view/(?P<pk>\d+)$', views.ChipDetailView.as_view(), name='chip_view'),
+    url(r'^chip_delete/(?P<pk>\d+)$', views.ChipDeleteView.as_view(), name='chip_delete'),
+
     url(r'^slot_type_list/$', views.SlotTypeListView.as_view(), name='slot_type_list'),
     url(r'^slot_type_create/$', views.SlotTypeCreateView.as_view(), name='slot_type_create'),
     url(r'^slot_type_update/(?P<pk>\d+)$', views.SlotTypeUpdateView.as_view(), name='slot_type_update'),
