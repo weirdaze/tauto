@@ -5,7 +5,6 @@ from django.contrib.contenttypes.models import ContentType
 
 from django.contrib.contenttypes.fields import GenericRelation
 from django.shortcuts import reverse
-# Create your models here.
 
 
 class DeviceType(models.Model):
@@ -316,6 +315,11 @@ class DeviceState(models.Model):
 
 
 class DeviceModel(models.Model):
+    hostname = models.CharField(max_length=300)
+    chassis = models.PositiveIntegerField(default=1)
+    fqdn = models.URLField()
+    serial = GenericRelation(Serial)
+    mac = GenericRelation(MacAddr)
     model = models.ForeignKey(DeviceModelNo, on_delete=models.DO_NOTHING)
     state = models.ForeignKey(DeviceState, on_delete=models.DO_NOTHING)
     slot = GenericRelation(Slot)

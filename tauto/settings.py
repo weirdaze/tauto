@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'workflow.apps.WorkflowConfig',
     'element.apps.ElementConfig',
     'organization.apps.OrganizationConfig',
+    'device_model.apps.DeviceModelConfig',
     'django_celery_results',
     'registration',
     'crispy_forms',

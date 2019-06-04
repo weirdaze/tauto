@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'', include('account.urls')),
     url(r'^workflow/', include('workflow.urls')),
     url(r'^inventory/', include('inventory.urls')),
+    url(r'^device_model/', include('device_model.urls')),
     url(r'^accounts/register/$', MyRegistrationView.as_view(), name='registration_register'),
     url(r'^accounts/login/$', auth_views.LoginView.as_view(), name='auth_login'),
     url(r'^accounts/logout/$', auth_views.LogoutView.as_view(template_name='registration/logout.html'), name='auth_logout'),
