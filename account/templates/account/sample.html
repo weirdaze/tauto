@@ -1,5 +1,100 @@
 {% extends 'account/base2.html' %}
 {% block body %}
-{% include 'account/breadcrumbs.html' %}
-<p> Hi, hope this sample works!</p>
+    {% include 'account/breadcrumbs.html' %}
+    <section class="section novi-background section-50">
+        <div class="container">
+            <h1>Workflow</h1>
+            <hr class="divider bg-mantis">
+            <div class="row justify-content-md-center offset-top-66 text-left">
+                <div class="col-md-9 col-lg-12">
+                    <!-- Bootstrap Accordion-->
+                    <div class="accordion-boxed offset-top-0" role="tablist" aria-multiselectable="true"
+                         id="accordion-2">
+                        <div class="card card-boxed">
+                            <a class="card-header" href="#" data-toggle="collapse"
+                               data-target="#accordion-2--card-0" aria-expanded="false"
+                               aria-controls="accordion-2--card-0">
+                                Step 1
+                            </a>
+                            {% if empty %}
+                                <a class="btn btn-sm btn-info mr-auto">Add Action</a>
+                            {% endif %}
+                            <div class="collapse" id="accordion-2--card-0" aria-labelledby="headingOne"
+                                 data-parent="#accordion-2">
+                                <div class="card-body">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-lg-2 my-auto">
+                                                <div class="btn-group btn-group-sm">
+                                                    <button class="btn btn-default" type="button">connect</button>
+                                                    <button class="btn btn-default dropdown-toggle" type="button"
+                                                            data-toggle="dropdown"
+                                                            aria-haspopup="true" aria-expanded="false"><span
+                                                            class="caret"></span><span
+                                                            class="sr-only">Toggle Dropdown</span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="#">Add Child</a></li>
+                                                        <li><a href="#">Edit Step</a></li>
+                                                    </ul>
+                                                </div>
+                                                <a href="#" data-toggle="collapse"
+                                                   data-target="#step1a" aria-expanded="true"
+                                                   aria-controls="step1a">
+                                                    <span><i class="fa fa-plus"></i></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-0" id="step1a">
+                                            <div class="col-lg-2 my-auto">
+                                                <hr>
+                                            </div>
+                                            <div class="col-lg-2 my-auto">
+                                                <div class="btn-group btn-group-sm">
+                                                    <button class="btn btn-default" type="button">retrieve</button>
+                                                    <button class="btn btn-default dropdown-toggle" type="button"
+                                                            data-toggle="dropdown"
+                                                            aria-haspopup="true" aria-expanded="false"><span
+                                                            class="caret"></span><span
+                                                            class="sr-only">Toggle Dropdown</span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="#">Add Child</a></li>
+                                                        <li><a href="#">Edit Step</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="card card-boxed"><a class="card-header collapsed" href="#" data-toggle="collapse"
+                                                        data-target="#accordion-2--card-1" aria-expanded="false"
+                                                        aria-controls="accordion-2--card-1">What happens at the end of
+                            my trial?</a>
+                            <div class="collapse" id="accordion-2--card-1" aria-labelledby="headingOne"
+                                 data-parent="#accordion-2">
+                                <div class="card-body">
+                                    ho
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card card-boxed">
+                            <a class="card-header collapsed" href="#" data-toggle="collapse"
+                               data-target="#accordion-2--card-2" aria-expanded="false"
+                               aria-controls="accordion-2--card-2">My account has expired, can
+                                I recover it?</a>
+                            <div class="collapse" id="accordion-2--card-2" aria-labelledby="headingOne"
+                                 data-parent="#accordion-2">
+                                <div class="card-body">
+                                    heyho
+                                </div>
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}

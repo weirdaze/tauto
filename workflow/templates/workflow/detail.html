@@ -1,0 +1,55 @@
+{% extends 'account/base2.html' %}
+{% load crispy_forms_tags %}
+{% load objects %}
+{% block body %}
+    {% include 'account/breadcrumbs.html' %}
+    <section class="section novi-background section-50">
+        <div class="container">
+            <h1>{{ section_title }}</h1>
+            <hr class="divider bg-mantis">
+            <div class="row">
+                <div class="col-3">
+                    <a class="btn-link" href="{% url update object.pk %}">Update</a>
+                </div>
+                <div class="col-3">
+                    <a class="btn-link" href="{% url delete object.pk %}">Delete</a>
+                </div>
+                <div class="col-3">
+                    <a class="btn-link" href="{% url create %}">Add New</a>
+                </div>
+                <div class="col-3">
+                    <a class="btn-link" href="{% url cancel %}">List All</a>
+                </div>
+            </div>
+            <div class="row">
+                {% if object %}
+                    <table class="table table-hover">
+                        <thead>
+                        <th>field</th>
+                        <th>value</th>
+                        </thead>
+                        <tbody>
+                        {% for item in object|get_fields %}
+                            {% if 'id' != item|parse_field_name and 'content_type' not in item|parse_field_name and 'object_id' != item|parse_field_name %}
+                                {% if 'action' in item|parse_field_name %}
+                                    {{ item|parse_object_type }}
+                                    <tr>
+                                        <td>{{ item|parse_field_name|capfirst }}</td>
+                                        <td>{% with object|parse_field_value:item as action %}
+                                            {{ action|parse_action_object }}{% endwith %}</td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td>{{ item|parse_field_name|capfirst }}</td>
+                                        <td>{{ object|parse_field_value:item }}</td>
+                                    </tr>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

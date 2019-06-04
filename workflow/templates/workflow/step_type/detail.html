@@ -1,0 +1,26 @@
+{% extends 'account/base2.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+    {% include 'account/breadcrumbs.html' %}
+    <section class="section novi-background section-50">
+        <div class="container">
+            <h1>{{ section_title }}</h1>
+            <hr class="divider bg-mantis">
+            <div class="row">
+                {% if object %}
+                    <div class="col mr-auto">
+                        <h4>{{ object.name }}</h4>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="d-flex">
+                <div class="flex-row">
+                    <div class="p-2"><a class="btn-link"
+                                        href="{% url 'workflow:step_type_update' object.pk %}">Update</a></div>
+                    <div class="p-2"><a class="btn-link"
+                                        href="{% url 'workflow:step_type_delete' object.pk %}">Delete</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

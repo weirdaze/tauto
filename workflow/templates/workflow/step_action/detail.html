@@ -1,0 +1,16 @@
+{% extends 'account/base2.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+    {% include 'account/breadcrumbs.html' %}
+    <section class="section novi-background section-50">
+        <div class="container">
+            <div class="row">
+                {% if object %}
+                    <div class="col">
+                        {{ object.name }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

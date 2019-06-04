@@ -30,10 +30,10 @@
 </div>
 <div class="page text-center">
     <!-- Page Head-->
-    <header class="section page-head slider-menu-position">
+    <header class="page-head">
         <!-- RD Navbar Transparent-->
         <div class="rd-navbar-wrap">
-            <nav class="rd-navbar rd-navbar-default rd-navbar-transparent" data-md-device-layout="rd-navbar-fixed"
+            <nav class="rd-navbar rd-navbar-default rd-navbar-light" data-md-device-layout="rd-navbar-fixed"
                  data-lg-device-layout="rd-navbar-static" data-lg-auto-height="true" data-md-layout="rd-navbar-fixed"
                  data-lg-layout="rd-navbar-static" data-lg-stick-up="true">
                 <div class="rd-navbar-inner">
@@ -746,58 +746,6 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a href="shop-grid-left-sidebar.html"><span>Shop</span></a>
-                                        <ul class="rd-navbar-dropdown">
-                                            <li><a href="#"><span class="text-middle">Grid View</span></a>
-                                                <ul class="rd-navbar-dropdown">
-                                                    <li><a href="shop-grid-no-sidebar.html"><span class="text-middle">No Sidebar</span></a>
-                                                    </li>
-                                                    <li><a href="shop-grid-left-sidebar.html"><span class="text-middle">Left Sidebar</span></a>
-                                                    </li>
-                                                    <li><a href="shop-grid-right-sidebar.html"><span
-                                                            class="text-middle">Right Sidebar</span></a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#"><span class="text-middle">List View</span></a>
-                                                <ul class="rd-navbar-dropdown">
-                                                    <li><a href="shop-list-no-sidebar.html"><span class="text-middle">No Sidebar</span></a>
-                                                    </li>
-                                                    <li><a href="shop-list-left-sidebar.html"><span class="text-middle">Left Sidebar</span></a>
-                                                    </li>
-                                                    <li><a href="shop-list-right-sidebar.html"><span
-                                                            class="text-middle">Right Sidebar</span></a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#"><span class="text-middle">Single Product</span></a>
-                                                <ul class="rd-navbar-dropdown">
-                                                    <li><a href="shop-single-product-no-sidebar.html"><span
-                                                            class="text-middle">No Sidebar</span></a>
-                                                    </li>
-                                                    <li><a href="shop-single-product-left-sidebar.html"><span
-                                                            class="text-middle">Left Sidebar</span></a>
-                                                    </li>
-                                                    <li><a href="shop-single-product-right-sidebar.html"><span
-                                                            class="text-middle">Right Sidebar</span></a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="shop-cart.html"><span class="text-middle">Cart View</span></a>
-                                            </li>
-                                            <li><a href="shop-checkout.html"><span
-                                                    class="text-middle">Checkout</span></a>
-                                                <ul class="rd-navbar-dropdown">
-                                                    <li><a href="shop-checkout.html"><span
-                                                            class="text-middle">Default</span></a>
-                                                    </li>
-                                                    <li><a href="shop-checkout-variant-2.html"><span
-                                                            class="text-middle">Variant 2</span></a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
                                     <li><a href="ui-kit.html"><span>Components</span></a>
                                         <div class="rd-navbar-megamenu">
                                             <!-- Responsive-tabs-->
@@ -1008,47 +956,11 @@
                                 </div>
                             </form>
                         </div>
-                        <!--RD Navbar shop-->
-                        <div class="rd-navbar-cart-wrap"><a class="rd-navbar-cart mdi" href="#"
-                                                            data-rd-navbar-toggle=".rd-navbar-cart-dropdown"><span></span></a>
-                            <div class="rd-navbar-cart-dropdown">
-                                <ul class="rd-navbar-list-products">
-                                    <li>
-                                        <div class="rd-navbar-product-image"><img src="images/shop/product-01-60x60.png"
-                                                                                  alt=""/></div>
-                                        <div class="rd-navbar-product-caption">
-                                            <h6 class="rd-navbar-product-title"><a
-                                                    href="shop-single-product-left-sidebar.html">Fashion model new</a>
-                                            </h6>
-                                            <p class="rd-navbar-product-price">$129.99</p>
-                                        </div>
-                                        <a class="mdi mdi-window-close rd-navbar-product-remove" href="#"></a>
-                                    </li>
-                                    <li>
-                                        <div class="rd-navbar-product-image"><img
-                                                src="images/shop/product-01-60x60-3.png" alt=""/></div>
-                                        <div class="rd-navbar-product-caption">
-                                            <h6 class="rd-navbar-product-title"><a
-                                                    href="shop-single-product-left-sidebar.html">Fashion model new 2</a>
-                                            </h6>
-                                            <p class="rd-navbar-product-price">$69.99</p>
-                                        </div>
-                                        <a class="mdi mdi-window-close rd-navbar-product-remove" href="#"></a>
-                                    </li>
-                                </ul>
-                                <div class="rd-navbar-cart-total">
-                                    <h6 class="rd-navbar-cart-total-title">Cart subtotal</h6><span
-                                        class="rd-navbar-cart-total-price">$199.98</span>
-                                </div>
-                                <div class="text-center"><a
-                                        class="btn btn-rect btn-sm btn-primary btn-icon btn-icon-left"
-                                        href="shop-cart.html"><span class="icon novi-icon mdi mdi-lock"></span>Go to
-                                    checkout</a></div>
-                            </div>
-                        </div>
+                        {% if not user.is_authenticated %}
                         <div class="rd-navbar-btn-wrap"><a class="btn btn-primary btn-anis-effect"
                                                            href="//novibuilder.com/documentation/" target="_blank"><span
-                                class="btn-text">Try Builder</span></a></div>
+                                class="btn-text">Login/Register</span></a></div>
+                        {% endif %}
                     </div>
                 </div>
             </nav>
@@ -1060,7 +972,9 @@
     <footer class="section novi-background section-34 page-footer bg-black context-dark">
         <div class="container">
             <div class="footer-brand"><a href="index.html"><img style='margin-top: -5px;margin-left: -15px;' width='138'
-                                                                height='31' src='{% static 'account/images/logo_arista_blue.png' %}' alt=''/></a>
+                                                                height='31'
+                                                                src='{% static 'account/images/logo_arista_blue.png' %}'
+                                                                alt=''/></a>
             </div>
             <p class="small text-darker">&copy; <span class="copyright-year"></span> . <a href="privacy.html">Privacy
                 Policy</a>

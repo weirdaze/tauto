@@ -1,0 +1,15 @@
+{% extends 'account/base2.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+    {% include 'account/breadcrumbs.html' %}
+    <section class="section novi-background section-50">
+        <div class="container">
+            <form method="post">
+                {% csrf_token %}
+                <p>Are you sure you want to delete "{{ object }}" ?</p>
+                <a class="btn btn-outline-dark ml-3" href="{% url cancel %}">Cancel</a>
+                <button class="btn btn-deluge" type="submit">Delete</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}
