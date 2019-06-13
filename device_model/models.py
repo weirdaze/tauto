@@ -191,35 +191,28 @@ class Serdes(models.Model):
     speed = models.ForeignKey(SerdesSpeed, on_delete=models.CASCADE)
     type = models.ForeignKey(SerdesType, on_delete=models.CASCADE)
 
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    object_id = models.PositiveIntegerField()
-    content_object = GenericForeignKey()
-
     def __str__(self):
         return self.name + " " + str(self.speed)
+
+    def get_absolute_url(self):
+        return reverse('device_model:serdes_view', args=[str(self.pk)])
 
 
 class Chip(models.Model):
     name = models.CharField(max_length=300)
-    serdes = GenericRelation(Serdes)
     model = models.ForeignKey(ChipModelNo, on_delete=models.CASCADE)
     macs = models.ManyToManyField(Mac)
     type = models.ForeignKey(ChipType, on_delete=models.DO_NOTHING, blank=True, null=True)
+    nif_serdes_num = models.PositiveIntegerField(default=0, blank=True, null=True)
+    nif_serdes = models.ForeignKey(Serdes, on_delete=models.DO_NOTHING, related_name='nif_serdes', blank=True, null=True)
+    fif_serdes_num = models.PositiveIntegerField(default=0, blank=True, null=True)
+    fif_serdes = models.ForeignKey(Serdes, on_delete=models.DO_NOTHING, related_name='fif_serdes', blank=True, null=True)
 
     def __str__(self):
         return str(self.model)
 
     def get_absolute_url(self):
         return reverse('device_model:chip_view', args=[str(self.pk)])
-
-
-class ChipModel(models.Model):
-    chip = models.ForeignKey(Chip, on_delete=models.CASCADE)
-    interface = GenericRelation(Interface)
-
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE, blank=True, null=True)
-    object_id = models.PositiveIntegerField(blank=True, null=True)
-    content_object = GenericForeignKey()
 
 
 class ModuleBuildModelNo(models.Model):
@@ -235,12 +228,26 @@ class ModuleBuildModelNo(models.Model):
 class ModuleBuild(models.Model):
     name = models.CharField(max_length=300)
     fqdn = models.URLField(blank=True, null=True)
-    chip = GenericRelation(ChipModel)
     model = models.ForeignKey(ModuleBuildModelNo, on_delete=models.CASCADE)
     ports = models.PositiveIntegerField(default=0)
 
     def __str__(self):
-        return self.model
+        return self.model.name
+
+    def get_absolute_url(self):
+        return reverse('device_model:module_build_view', args=[str(self.pk)])
+
+
+class ChipModel(models.Model):
+    chip = models.ForeignKey(Chip, on_delete=models.CASCADE, blank=True, null=True)
+    interface = GenericRelation(Interface)
+    module_build = models.ForeignKey(ModuleBuild, on_delete=models.CASCADE, blank=True, null=True)
+
+    def __str__(self):
+        return self.chip.model.code_name + " (" + self.module_build.model.name + ")"
+
+    def get_absolute_url(self):
+        return reverse('device_model:chip_model_view', args=[str(self.pk)])
 
 
 class ModuleSerial(models.Model):

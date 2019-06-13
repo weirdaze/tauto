@@ -1,0 +1,41 @@
+{% extends 'account/base2.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+    {% include 'account/breadcrumbs.html' %}
+    <section class="section novi-background section-66 section-sm-bottom-110">
+        <div class="container">
+            <h1>{{ section_title }}</h1>
+            <hr class="divider bg-mantis">
+        <a class="btn btn-link" href="{% url create %}"><i class="fa fa-plus ml-2"></i>Add {{ section_title }}</a>
+            <div class="row offset-md-top-66">
+                <div class="offset-xl-2 col-xl-8">
+                    <!-- Bootstrap Table-->
+                    <div class="table-responsive clearfix">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Name</th>
+                            </tr>
+                            {% if object_list %}
+                                {% for item in object_list %}
+                                    <tr>
+                                        <th>
+                                            <div class="btn-group btn-group-sm">
+                                                <button class="btn btn-sm btn-default dropdown-toggle" type="button"
+                                                        data-toggle="dropdown" aria-haspopup="true"
+                                                        aria-expanded="false">{{ item }}<span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="{{ item.get_absolute_url }}">View Details</a></li>
+                                                </ul>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'account/base2.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+    {% include 'account/breadcrumbs.html' %}
+    <section class="section novi-background section-66">
+        <div class="container">
+            <h1>{{ section_title }}</h1>
+            <hr class="divider bg-mantis">
+            <div class="row">
+                {% if object %}
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <td>Chips:</td>
+                                <td>
+                                    {% for item in chips  %}
+                                        {{ item }}
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                {% endif %}
+            </div>
+            <h2>Add Chips</h2>
+            <hr class="divider bg-mantis">
+            <form class="form-group" method="post" action="{% url 'device_model:chip_model_create' %}">
+                {% csrf_token %}
+                {{ chipmodel_form|crispy }}
+                <input type="text" value="{{ object.pk }}" name="chip_model" hidden>
+                <a class="btn btn-outline-dark ml-3" href="{% url cancel %}">Cancel</a>
+                <button class="btn btn-block" type="submit">Submit</button>
+            </form>
+
+            <h2>Base</h2>
+            <hr class="divider bg-mantis">
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <a class="btn btn-outline-dark ml-3" href="{% url cancel %}">Cancel</a>
+                <button class="btn btn-block" type="submit">Submit</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

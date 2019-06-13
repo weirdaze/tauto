@@ -226,37 +226,67 @@
                                     </li>
                                     <li><a class="new" href="#"><span>Admin</span></a>
                                         <ul class="rd-navbar-dropdown">
-                                            <li><a href="#"><span class="text-middle">Chip</span></a>
+                                            <li>
+                                                <a href="#"><span class="text-middle">Module</span></a>
                                                 <ul class="rd-navbar-dropdown">
                                                     <li>
-                                                        <a href="{% url 'device_model:chip_list' %}">
-                                                            <span class="text-middle">Chip Config</span>
+                                                        <a href="{% url 'device_model:module_type_list' %}">
+                                                            <span class="text-middle">Module Type</span>
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="{% url 'device_model:chip_type_list' %}">
-                                                            <span class="text-middle">Chip Type</span>
+                                                        <a href="{% url 'device_model:module_build_model_no_list' %}">
+                                                            <span class="text-middle">Module Build Model No</span>
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="{% url 'device_model:chip_model_no_list' %}">
-                                                            <span class="text-middle">Chip Model No</span>
+                                                        <a href="{% url 'device_model:module_build_list' %}">
+                                                            <span class="text-middle">Module Build Config</span>
                                                         </a>
                                                     </li>
-                                                    <li>
-                                                        <a href="{% url 'device_model:serdes_speed_list' %}">
-                                                            <span class="text-middle">Serdes Speed</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{% url 'device_model:serdes_type_list' %}">
-                                                            <span class="text-middle">Serdes Type</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{% url 'device_model:mac_list' %}">
-                                                            <span class="text-middle">Macs</span>
-                                                        </a>
+                                                    <li><a href="#"><span class="text-middle">Chip</span></a>
+                                                        <ul class="rd-navbar-dropdown">
+                                                            <li>
+                                                                <a href="{% url 'device_model:chip_model_list' %}">
+                                                                    <span class="text-middle">Chip Model Config</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="{% url 'device_model:chip_list' %}">
+                                                                    <span class="text-middle">Chip Config</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="{% url 'device_model:serdes_list' %}">
+                                                                    <span class="text-middle">Serdes Config</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="{% url 'device_model:chip_type_list' %}">
+                                                                    <span class="text-middle">Chip Type</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="{% url 'device_model:chip_model_no_list' %}">
+                                                                    <span class="text-middle">Chip Model No</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="{% url 'device_model:serdes_speed_list' %}">
+                                                                    <span class="text-middle">Serdes Speed</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="{% url 'device_model:serdes_type_list' %}">
+                                                                    <span class="text-middle">Serdes Type</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="{% url 'device_model:mac_list' %}">
+                                                                    <span class="text-middle">Macs</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -829,9 +859,10 @@
                             </form>
                         </div>
                         {% if not user.is_authenticated %}
-                        <div class="rd-navbar-btn-wrap"><a class="btn btn-primary btn-anis-effect"
-                                                           href="//novibuilder.com/documentation/" target="_blank"><span
-                                class="btn-text">Login/Register</span></a></div>
+                            <div class="rd-navbar-btn-wrap"><a class="btn btn-primary btn-anis-effect"
+                                                               href="//novibuilder.com/documentation/"
+                                                               target="_blank"><span
+                                    class="btn-text">Login/Register</span></a></div>
                         {% endif %}
                     </div>
                 </div>

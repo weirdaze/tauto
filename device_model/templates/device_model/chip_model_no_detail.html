@@ -34,35 +34,8 @@
                                 <td>{{ object.name }}</td>
                             </tr>
                             <tr>
-                                <td>model</td>
-                                <td>{{ object.model }}</td>
-                            </tr>
-                            <tr>
-                                <td>type</td>
-                                <td>{{ object.type }}</td>
-                            </tr>
-                            <tr>
-                                <td>MAC's Allowed</td>
-                                <td>{% for item in object.macs.all %}
-                                        {{ item }}
-                                    {% endfor %}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Network Serdes</td>
-                                <td>{{ object.nif_serdes_num }} x {{ object.nif_serdes }}</td>
-                            </tr>
-                            <tr>
-                                <td>Fabric Serdes</td>
-                                <td>{{ object.fif_serdes_num }} x {{ object.fif_serdes }}</td>
-                            </tr>
-                            <tr>
-                                <td>Supported Modules</td>
-                                <td>
-                                    {% for mods in modules %}
-                                        {{ mods }}
-                                    {% endfor %}
-                                </td>
+                                <td>code name</td>
+                                <td>{{ object.code_name }}</td>
                             </tr>
                         </tbody>
                     </table>

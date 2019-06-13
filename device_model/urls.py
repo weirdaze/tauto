@@ -35,6 +35,18 @@ urlpatterns = [
     url(r'^chip_view/(?P<pk>\d+)$', views.ChipDetailView.as_view(), name='chip_view'),
     url(r'^chip_delete/(?P<pk>\d+)$', views.ChipDeleteView.as_view(), name='chip_delete'),
 
+    url(r'^chip_model_list/$', views.ChipModelListView.as_view(), name='chip_model_list'),
+    url(r'^chip_model_create/$', views.ChipModelCreateView.as_view(), name='chip_model_create'),
+    url(r'^chip_model_update/(?P<pk>\d+)$', views.ChipModelUpdateView.as_view(), name='chip_model_update'),
+    url(r'^chip_model_view/(?P<pk>\d+)$', views.ChipModelDetailView.as_view(), name='chip_model_view'),
+    url(r'^chip_model_delete/(?P<pk>\d+)$', views.ChipModelDeleteView.as_view(), name='chip_model_delete'),
+
+    url(r'^serdes_list/$', views.SerdesListView.as_view(), name='serdes_list'),
+    url(r'^serdes_create/$', views.SerdesCreateView.as_view(), name='serdes_create'),
+    url(r'^serdes_update/(?P<pk>\d+)$', views.SerdesUpdateView.as_view(), name='serdes_update'),
+    url(r'^serdes_view/(?P<pk>\d+)$', views.SerdesDetailView.as_view(), name='serdes_view'),
+    url(r'^serdes_delete/(?P<pk>\d+)$', views.SerdesDeleteView.as_view(), name='serdes_delete'),
+
     url(r'^slot_type_list/$', views.SlotTypeListView.as_view(), name='slot_type_list'),
     url(r'^slot_type_create/$', views.SlotTypeCreateView.as_view(), name='slot_type_create'),
     url(r'^slot_type_update/(?P<pk>\d+)$', views.SlotTypeUpdateView.as_view(), name='slot_type_update'),
@@ -77,4 +89,12 @@ urlpatterns = [
     url(r'^chip_model_no_update/(?P<pk>\d+)$', views.ChipModelNoUpdateView.as_view(), name='chip_model_no_update'),
     url(r'^chip_model_no_view/(?P<pk>\d+)$', views.ChipModelNoDetailView.as_view(), name='chip_model_no_view'),
     url(r'^chip_model_no_delete/(?P<pk>\d+)$', views.ChipModelNoDeleteView.as_view(), name='chip_model_no_delete'),
+
+
+    url(r'^module_build_list/$', views.ModuleBuildListView.as_view(), name='module_build_list'),
+    url(r'^module_build_create/$', views.ModuleBuildCreateView.as_view(), name='module_build_create'),
+    url(r'^module_build_update/(?P<pk>\d+)$', views.ModuleBuildUpdateView.as_view(), name='module_build_update'),
+    url(r'^module_build_view/(?P<pk>\d+)$', views.ModuleBuildDetailView.as_view(), name='module_build_view'),
+    url(r'^module_build_delete/(?P<pk>\d+)$', views.ModuleBuildDeleteView.as_view(), name='module_build_delete'),
+
 ]

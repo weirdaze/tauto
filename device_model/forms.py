@@ -1,5 +1,5 @@
 from django import forms
-from .models import DeviceType, SlotType, ModuleType, ChipType, DeviceModelNo, SlotModelNo, ModuleBuildModelNo, ChipModelNo, SerdesType, SerdesSpeed, Mac, Chip
+from .models import DeviceType, SlotType, ModuleType, ChipType, DeviceModelNo, SlotModelNo, ModuleBuildModelNo, ChipModelNo, SerdesType, SerdesSpeed, Mac, Chip, Serdes, ModuleBuild, ChipModel
 
 
 class DeviceTypeForm(forms.ModelForm):
@@ -24,6 +24,12 @@ class MacForm(forms.ModelForm):
     class Meta:
         model = Mac
         fields = ['speed', 'unit']
+
+
+class SerdesForm(forms.ModelForm):
+    class Meta:
+        model = Serdes
+        fields = ['name', 'speed', 'type']
 
 
 class SlotTypeForm(forms.ModelForm):
@@ -62,6 +68,12 @@ class ModuleBuildModelNoForm(forms.ModelForm):
         fields = ['name']
 
 
+class ModuleBuildForm(forms.ModelForm):
+    class Meta:
+        model = ModuleBuild
+        fields = ['name', 'model', 'ports']
+
+
 class ChipModelNoForm(forms.ModelForm):
     class Meta:
         model = ChipModelNo
@@ -71,4 +83,18 @@ class ChipModelNoForm(forms.ModelForm):
 class ChipForm(forms.ModelForm):
     class Meta:
         model = Chip
-        fields = ['name', 'model', 'type', 'macs']
+        fields = ['name', 'model', 'type', 'macs', 'nif_serdes_num', 'nif_serdes', 'fif_serdes_num', 'fif_serdes']
+
+
+class ChipModelForm(forms.ModelForm):
+    class Meta:
+        model = ChipModel
+        fields = ['chip', 'module_build']
+
+
+class ChipModelModuleBuildForm(forms.ModelForm):
+    qty = forms.IntegerField(required=True)
+
+    class Meta:
+        model = ChipModel
+        fields = ['chip']

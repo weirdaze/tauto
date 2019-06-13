@@ -2,19 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5901c17b-4376-4ae4-a1e8-7520ce3b526f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/device_model/templates/device_model/chip_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/device_model/templates/device_model/chip_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/device_model/templates/device_model/mac_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/device_model/templates/device_model/mac_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/device_model/templates/device_model/chip_model_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/device_model/templates/device_model/chip_model_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/device_model/templates/device_model/chip_model_no_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/device_model/templates/device_model/chip_model_no_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/device_model/templates/device_model/module_build_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/device_model/templates/device_model/module_build_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/device_model/templates/device_model/modulebuild_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/device_model/templates/device_model/serdes_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/device_model/templates/device_model/serdes_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/account/templates/account/base2.html" beforeDir="false" afterPath="$PROJECT_DIR$/account/templates/account/base2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/device_model/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/device_model/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/device_model/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/device_model/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/device_model/templates/device_model/chip_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/device_model/templates/device_model/chip_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/device_model/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/device_model/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/device_model/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/device_model/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tauto/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/tauto/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tauto/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/tauto/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/workflow/templates/workflow/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/workflow/templates/workflow/list.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,11 +33,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/device_model/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="206" column="14" selection-start-line="206" selection-start-column="14" selection-end-line="206" selection-end-column="14" />
+            <state relative-caret-position="2955">
+              <caret line="203" column="11" selection-start-line="203" selection-start-column="11" selection-end-line="203" selection-end-column="11" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
-                <element signature="e#9741#9940#0" />
               </folding>
             </state>
           </provider>
@@ -43,20 +45,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/account/templates/account/base2.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="233" column="60" lean-forward="true" selection-start-line="233" selection-start-column="60" selection-end-line="233" selection-end-column="60" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/device_model/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="370">
-              <caret line="34" column="83" selection-start-line="34" selection-start-column="83" selection-end-line="34" selection-end-column="83" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="3975">
+              <caret line="265" column="73" selection-start-line="265" selection-start-column="73" selection-end-line="265" selection-end-column="73" />
             </state>
           </provider>
         </entry>
@@ -64,8 +54,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/device_model/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="730">
-              <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
+            <state relative-caret-position="1395">
+              <caret line="94" column="30" selection-start-line="94" selection-start-column="6" selection-end-line="94" selection-end-column="30" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -73,11 +63,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/device_model/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="696" column="27" selection-start-line="696" selection-start-column="27" selection-end-line="696" selection-end-column="27" />
+            <state relative-caret-position="219">
+              <caret line="2283" selection-start-line="2283" selection-end-line="2283" />
               <folding>
                 <element signature="e#0#56#0" expanded="true" />
               </folding>
@@ -86,40 +76,51 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/account/templatetags/objects.py">
+        <entry file="file://$PROJECT_DIR$/device_model/templates/device_model/modulebuild_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="37" lean-forward="true" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
-              <folding>
-                <element signature="e#0#27#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="465">
+              <caret line="31" column="38" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/device_model/templates/device_model/chip_model_no_detail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="645">
+              <caret line="43" column="14" selection-start-line="43" selection-start-column="14" selection-end-line="43" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/device_model/templates/device_model/chip_detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="29" lean-forward="true" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+            <state relative-caret-position="870">
+              <caret line="58" column="28" selection-start-line="58" selection-start-column="28" selection-end-line="58" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/workflow/templates/workflow/detail.html">
+        <entry file="file://$PROJECT_DIR$/device_model/templates/device_model/chip_model_list.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/device_model/templates/device_model/module_build_detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+            <state relative-caret-position="810">
+              <caret line="54" column="18" selection-start-line="23" selection-start-column="12" selection-end-line="54" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/device_model/templates/device_model/device_model_list.html">
+        <entry file="file://$PROJECT_DIR$/device_model/templates/device_model/chip_model_detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="74" lean-forward="true" selection-start-line="8" selection-start-column="74" selection-end-line="8" selection-end-column="74" />
+            <state relative-caret-position="600">
+              <caret line="40" column="51" selection-start-line="40" selection-start-column="51" selection-end-line="40" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -136,27 +137,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>novi</find>
-      <find>btn</find>
-      <find>logo</find>
-      <find>shop</find>
-      <find>ModelNo</find>
-      <find>ListView</find>
-      <find>delete</find>
-      <find>foreignkey</find>
-      <find>slottyp</find>
-      <find>moduleTy</find>
-      <find>build</find>
       <find>deviceMo</find>
       <find>module</find>
       <find>Serdes</find>
       <find>inventory</find>
       <find>features</find>
       <find>serdesspee</find>
-      <find>mac</find>
       <find>name=</find>
       <find>chipLi</find>
+      <find>serdes</find>
+      <find>mac</find>
+      <find>module buil</find>
       <find>chip</find>
+      <find>CHIP C</find>
+      <find>chip model num</find>
+      <find>module_ty</find>
+      <find>context</find>
+      <find>moduleBuild</find>
+      <find>moduleBuildList</find>
+      <find>chipMo</find>
+      <find>kwargs</find>
+      <find>pk=</find>
+      <find>Modul</find>
+      <find>modulebuildList</find>
+      <find>chip(</find>
+      <find>chipModelDe</find>
+      <find>ChipDe</find>
+      <find>moduleBuildU</find>
+      <find>Chi</find>
+      <find>ModuleBuildUp</find>
+      <find>modulebuildde</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -165,11 +175,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/account/regbackend.py" />
-        <option value="$PROJECT_DIR$/account/forms.py" />
-        <option value="$PROJECT_DIR$/requirements.txt" />
-        <option value="$PROJECT_DIR$/account/admin.py" />
-        <option value="$PROJECT_DIR$/account/static/account/css/style.css" />
         <option value="$PROJECT_DIR$/account/templates/account/index.html" />
         <option value="$PROJECT_DIR$/account/views.py" />
         <option value="$PROJECT_DIR$/account/urls.py" />
@@ -209,13 +214,18 @@
         <option value="$PROJECT_DIR$/device_model/templates/device_model/mac_list.html" />
         <option value="$PROJECT_DIR$/device_model/templates/device_model/mac_detail.html" />
         <option value="$PROJECT_DIR$/workflow/templates/workflow/list.html" />
-        <option value="$PROJECT_DIR$/device_model/forms.py" />
-        <option value="$PROJECT_DIR$/device_model/urls.py" />
-        <option value="$PROJECT_DIR$/account/templates/account/base2.html" />
         <option value="$PROJECT_DIR$/device_model/templates/device_model/chip_list.html" />
+        <option value="$PROJECT_DIR$/device_model/templates/device_model/serdes_detail.html" />
+        <option value="$PROJECT_DIR$/device_model/urls.py" />
+        <option value="$PROJECT_DIR$/device_model/templates/device_model/chip_model_no_detail.html" />
+        <option value="$PROJECT_DIR$/account/templates/account/base2.html" />
         <option value="$PROJECT_DIR$/device_model/models.py" />
-        <option value="$PROJECT_DIR$/device_model/views.py" />
+        <option value="$PROJECT_DIR$/device_model/templates/device_model/module_build_detail.html" />
+        <option value="$PROJECT_DIR$/device_model/templates/device_model/chip_model_detail.html" />
         <option value="$PROJECT_DIR$/device_model/templates/device_model/chip_detail.html" />
+        <option value="$PROJECT_DIR$/device_model/forms.py" />
+        <option value="$PROJECT_DIR$/device_model/templates/device_model/modulebuild_form.html" />
+        <option value="$PROJECT_DIR$/device_model/views.py" />
       </list>
     </option>
   </component>
@@ -237,24 +247,6 @@
             <path>
               <item name="tauto" type="b2602c69:ProjectViewProjectNode" />
               <item name="tauto" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tauto" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tauto" type="462c0819:PsiDirectoryNode" />
-              <item name="device_model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tauto" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tauto" type="462c0819:PsiDirectoryNode" />
-              <item name="device_model" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tauto" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tauto" type="462c0819:PsiDirectoryNode" />
-              <item name="device_model" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="device_model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="tauto" type="b2602c69:ProjectViewProjectNode" />
@@ -290,18 +282,18 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/device_model" />
+      <recent name="$PROJECT_DIR$/workflow/templates/workflow/step" />
+      <recent name="$PROJECT_DIR$/workflow/templates/workflow/step_type" />
+      <recent name="$PROJECT_DIR$/workflow/templates/workflow/step_state" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/device_model/templates/device_model" />
       <recent name="$PROJECT_DIR$/workflow/templates/workflow" />
       <recent name="$PROJECT_DIR$/workflow/templates/workflow/workflow_model" />
       <recent name="$PROJECT_DIR$/workflow/templates/workflow/workflow_type" />
       <recent name="$PROJECT_DIR$/workflow/templates/workflow/step_action" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/device_model" />
-      <recent name="$PROJECT_DIR$/workflow/templates/workflow/step" />
-      <recent name="$PROJECT_DIR$/workflow/templates/workflow/step_type" />
-      <recent name="$PROJECT_DIR$/workflow/templates/workflow/step_state" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -383,17 +375,19 @@
       <workItem from="1558105054336" duration="2613000" />
       <workItem from="1558227517099" duration="79717000" />
       <workItem from="1559653576534" duration="12099000" />
+      <workItem from="1559670807427" duration="28185000" />
+      <workItem from="1560441909632" duration="385000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94460000" />
+    <option name="totallyTimeSpent" value="123030000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="3" y="23" width="1670" height="987" extended-state="0" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.12960687" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.13206388" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="1" />
@@ -422,30 +416,6 @@
     <SUITE FILE_PATH="coverage/tauto$pcap.coverage" NAME="pcap Coverage Results" MODIFIED="1559232317976" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/inventory" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/workflow/templates/workflow/step/list.html" />
-    <entry file="file://$PROJECT_DIR$/account/templates/account/sample.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1273">
-          <caret line="95" column="22" lean-forward="true" selection-start-line="95" selection-start-column="22" selection-end-line="95" selection-end-column="22" />
-          <folding>
-            <element signature="e#2750#3651#0#HTML" />
-            <element signature="e#3800#4119#0#HTML" />
-            <element signature="e#3986#4975#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/workflow/templates/workflow/step_state/stepstate_confirm_delete.html" />
-    <entry file="file://$PROJECT_DIR$/workflow/templates/workflow/step_state/stepstate_form.html" />
-    <entry file="file://$PROJECT_DIR$/workflow/templates/workflow/step_state/detail.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/workflow/templates/workflow/step_state/list.html" />
-    <entry file="file://$PROJECT_DIR$/workflow/templates/workflow/step_type/list.html" />
-    <entry file="file://$PROJECT_DIR$/workflow/templates/workflow/step/step_form.html" />
-    <entry file="file://$PROJECT_DIR$/workflow/templates/workflow/step/detail.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/workflow/templates/workflow/step_action/detail.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -515,16 +485,6 @@
           <caret line="5" column="31" lean-forward="true" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/workflow/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2040">
-          <caret line="136" column="26" selection-start-line="136" selection-start-column="26" selection-end-line="136" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -679,71 +639,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/device_model/templates/device_model/device_model_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="74" lean-forward="true" selection-start-line="8" selection-start-column="74" selection-end-line="8" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/device_model/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="34" column="83" selection-start-line="34" selection-start-column="83" selection-end-line="34" selection-end-column="83" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/account/templatetags/objects.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="37" lean-forward="true" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/device_model/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="730">
-          <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/device_model/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="696" column="27" selection-start-line="696" selection-start-column="27" selection-end-line="696" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#56#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/account/templates/account/base2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="233" column="60" lean-forward="true" selection-start-line="233" selection-start-column="60" selection-end-line="233" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/device_model/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="206" column="14" selection-start-line="206" selection-start-column="14" selection-end-line="206" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-            <element signature="e#9741#9940#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/device_model/templates/device_model/chip_list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -760,15 +655,140 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/workflow/templates/workflow/detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+        <state relative-caret-position="345">
+          <caret line="23" column="29" lean-forward="true" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_model/templates/device_model/device_model_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="74" lean-forward="true" selection-start-line="8" selection-start-column="74" selection-end-line="8" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/account/templatetags/objects.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="37" lean-forward="true" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_model/templates/device_model/serdes_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="42" column="33" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_model/templates/device_model/serdes_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="53" lean-forward="true" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_model/templates/device_model/module_build_list.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_model/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="37" column="40" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_model/templates/device_model/chip_model_no_list.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/workflow/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="141" column="17" selection-start-line="141" selection-start-column="10" selection-end-line="141" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_model/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2955">
+          <caret line="203" column="11" selection-start-line="203" selection-start-column="11" selection-end-line="203" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/account/templates/account/base2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3975">
+          <caret line="265" column="73" selection-start-line="265" selection-start-column="73" selection-end-line="265" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_model/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1395">
+          <caret line="94" column="30" selection-start-line="94" selection-start-column="6" selection-end-line="94" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_model/templates/device_model/modulebuild_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="38" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_model/templates/device_model/chip_model_no_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="43" column="14" selection-start-line="43" selection-start-column="14" selection-end-line="43" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/device_model/templates/device_model/chip_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="29" lean-forward="true" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+        <state relative-caret-position="870">
+          <caret line="58" column="28" selection-start-line="58" selection-start-column="28" selection-end-line="58" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_model/templates/device_model/chip_model_list.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_model/templates/device_model/module_build_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="54" column="18" selection-start-line="23" selection-start-column="12" selection-end-line="54" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_model/templates/device_model/chip_model_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="40" column="51" selection-start-line="40" selection-start-column="51" selection-end-line="40" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_model/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="2283" selection-start-line="2283" selection-end-line="2283" />
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

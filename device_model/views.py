@@ -1,10 +1,11 @@
 from __future__ import absolute_import, unicode_literals
 from django.views.generic.edit import CreateView, UpdateView
-from django.views.generic import ListView, DetailView, DeleteView
+from django.views.generic import ListView, DetailView, DeleteView, TemplateView
 from django.urls import reverse_lazy
+from django.shortcuts import HttpResponse
 
-from .models import DeviceType, SlotType, ModuleType, ChipType, DeviceModelNo, SlotModelNo, ModuleBuildModelNo, ChipModelNo, SerdesType, DeviceModel, SerdesSpeed, Mac, Chip
-from .forms import DeviceTypeForm, SlotTypeForm, ModuleTypeForm, ChipTypeForm, DeviceModelNoForm, SlotModelNoForm, ModuleBuildModelNoForm, ChipModelNoForm, SerdesTypeForm, SerdesSpeedForm, MacForm, ChipForm
+from .models import DeviceType, SlotType, ModuleType, ChipType, DeviceModelNo, SlotModelNo, ModuleBuildModelNo, ChipModelNo, SerdesType, DeviceModel, SerdesSpeed, Mac, Chip, Serdes, ModuleBuild, ChipModel
+from .forms import DeviceTypeForm, SlotTypeForm, ModuleTypeForm, ChipTypeForm, DeviceModelNoForm, SlotModelNoForm, ModuleBuildModelNoForm, ChipModelNoForm, SerdesTypeForm, SerdesSpeedForm, MacForm, SerdesForm, ModuleBuildForm, ChipModelForm, ChipForm,ChipModelModuleBuildForm
 
 
 # Create your views here.
@@ -599,6 +600,153 @@ class MacDeleteView(DeleteView):
 
 
 # --------------------------------------------
+# Serdes CRUD
+# --------------------------------------------
+# Create your views here.
+class SerdesListView(ListView):
+    model = Serdes
+    template_name = 'device_model/serdes_list.html'
+
+    path = [
+        ("home", "account:index"),
+        ("serdes", "/device_model/serdes_list/"),
+        ("serdes list", "/device_model/serdes_list")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Serdes',
+        'section_title': 'Serdes',
+        'breadcrumb_path': path,
+        'create': 'device_model:serdes_create',
+        'delete': 'device_model:serdes_delete',
+        'update': 'device_model:serdes_update',
+        'cancel': 'device_model:serdes_list',
+        'icon': 'mdi-format-list-bulleted',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(SerdesListView, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+    def get_queryset(self):
+        queryset = Serdes.objects.all()
+        print(str(queryset))
+        return queryset
+
+
+class SerdesUpdateView(UpdateView):
+    model = Serdes
+    form_class = SerdesForm
+    template_name = 'workflow/form.html'
+
+    path = [
+        ("home", "account:index"),
+        ("serdes", '/device_model/serdes_list'),
+        ("serdes update", "/device_model/serdes_update")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Serdes Update',
+        'section_title': 'Serdes Update',
+        'breadcrumb_path': path,
+        'create': 'device_model:serdes_create',
+        'delete': 'device_model:serdes_delete',
+        'update': 'device_model:serdes_update',
+        'cancel': 'device_model:serdes_list',
+        'icon': 'fa fa-edit',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(SerdesUpdateView, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+
+class SerdesCreateView(CreateView):
+    model = Serdes
+    form_class = SerdesForm
+    template_name = 'workflow/form.html'
+
+    path = [
+        ("home", "account:index"),
+        ("serdes", '/device_model/serdes_list'),
+        ("serdes create", "/device_model/serdes_create")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Serdes Create',
+        'section_title': 'Serdes Create',
+        'breadcrumb_path': path,
+        'create': 'device_model:serdes_create',
+        'delete': 'device_model:serdes_delete',
+        'update': 'device_model:serdes_update',
+        'cancel': 'device_model:serdes_list',
+        'icon': 'fa fa-plus',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(SerdesCreateView, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+
+class SerdesDetailView(DetailView):
+    model = Serdes
+    template_name = 'device_model/serdes_detail.html'
+
+    path = [
+        ("home", "account:index"),
+        ("serdes", '/device_model/serdes_list'),
+        ("serdes detail", "/device_model/serdes_view")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Serdes Detail',
+        'section_title': 'Serdes Detail',
+        'breadcrumb_path': path,
+        'create': 'device_model:serdes_create',
+        'delete': 'device_model:serdes_delete',
+        'update': 'device_model:serdes_update',
+        'cancel': 'device_model:serdes_list',
+        'icon': 'fa fa-cogs',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(SerdesDetailView, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+
+class SerdesDeleteView(DeleteView):
+    model = Serdes
+    success_url = reverse_lazy('device_model:serdes_list')
+    template_name = 'workflow/confirm_delete.html'
+
+    path = [
+        ("home", "account:index"),
+        ("serdes", 'device_model/serdes_list'),
+        ("serdes delete", "/device_model/serdes_delete")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Serdes Delete',
+        'section_title': 'Serdes Delete',
+        'breadcrumb_path': path,
+        'create': 'device_model:serdes_create',
+        'delete': 'device_model:serdes_delete',
+        'update': 'device_model:serdes_update',
+        'cancel': 'device_model:serdes_list',
+        'icon': 'mdi-delete-variant',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(SerdesDeleteView, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+
+# --------------------------------------------
 # Chip CRUD
 # --------------------------------------------
 # Create your views here.
@@ -712,6 +860,22 @@ class ChipDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(ChipDetailView, self).get_context_data(**kwargs)
+
+        chip = self.get_object()
+        chip_model = ChipModel.objects.filter(chip=chip).order_by('module_build').values('module_build').distinct()
+
+        mods = []
+        for mod in chip_model:
+            mods.append(ModuleBuild.objects.get(pk=mod['module_build']))
+            # print(ModuleBuild.objects.get(pk=mod['module_build']))
+
+        # print(str(mods))
+        self.extra_context.update(
+            {
+                'modules': mods
+            }
+        )
+
         context.update(self.extra_context)
         return context
 
@@ -723,8 +887,8 @@ class ChipDeleteView(DeleteView):
 
     path = [
         ("home", "account:index"),
-        ("chips", 'device_model/mac_list'),
-        ("chip delete", "/device_model/mac_delete")
+        ("chips", 'device_model/chip_list'),
+        ("chip delete", "/device_model/chip_delete")
     ]
 
     extra_context = {
@@ -740,6 +904,167 @@ class ChipDeleteView(DeleteView):
 
     def get_context_data(self, **kwargs):
         context = super(ChipDeleteView, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+
+# --------------------------------------------
+# Chip Model CRUD
+# --------------------------------------------
+# Create your views here.
+class ChipModelListView(ListView):
+    model = Chip
+    template_name = 'device_model/chip_model_list.html'
+
+    path = [
+        ("home", "account:index"),
+        ("chip models", "/device_model/chip_model_list/"),
+        ("chip model list", "/device_model/chip_model_list")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Chip Model',
+        'section_title': 'Chip Model',
+        'breadcrumb_path': path,
+        'create': 'device_model:chip_model_create',
+        'delete': 'device_model:chip_model_delete',
+        'update': 'device_model:chip_model_update',
+        'cancel': 'device_model:chip_model_list',
+        'icon': 'mdi-format-list-bulleted',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(ChipModelListView, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+    def get_queryset(self):
+        queryset = ChipModel.objects.all()
+        return queryset
+
+
+class ChipModelUpdateView(UpdateView):
+    model = ChipModel
+    form_class = ChipModelForm
+    template_name = 'workflow/form.html'
+
+    path = [
+        ("home", "account:index"),
+        ("chip models", '/device_model/chip_model_list'),
+        ("chip model update", "/device_model/chip_model_update")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Chip Model Update',
+        'section_title': 'Chip Model Update',
+        'breadcrumb_path': path,
+        'create': 'device_model:chip_model_create',
+        'delete': 'device_model:chip_model_delete',
+        'update': 'device_model:chip_model_update',
+        'cancel': 'device_model:chip_model_list',
+        'icon': 'fa fa-edit',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(ChipModelUpdateView, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+
+class ChipModelCreateView(CreateView):
+    model = ChipModel
+    form_class = ChipModelForm
+    template_name = 'workflow/form.html'
+
+    path = [
+        ("home", "account:index"),
+        ("chip models", '/device_model/chip_model_list'),
+        ("chip model create", "/device_model/chip_model_create")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Chip Model Create',
+        'section_title': 'Chip Model Create',
+        'breadcrumb_path': path,
+        'create': 'device_model:chip_model_create',
+        'delete': 'device_model:chip_model_delete',
+        'update': 'device_model:chip_model_update',
+        'cancel': 'device_model:chip_model_list',
+        'icon': 'fa fa-plus',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(ChipModelCreateView, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+
+class ChipModelDetailView(DetailView):
+    model = ChipModel
+    template_name = 'device_model/chip_model_detail.html'
+
+    path = [
+        ("home", "account:index"),
+        ("chip models", '/device_model/chip_model_list'),
+        ("chip model detail", "/device_model/chip_model_view")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Chip Model Detail',
+        'section_title': 'Chip Model Detail',
+        'breadcrumb_path': path,
+        'create': 'device_model:chip_model_create',
+        'delete': 'device_model:chip_model_delete',
+        'update': 'device_model:chip_model_update',
+        'cancel': 'device_model:chip_model_list',
+        'icon': 'fa fa-cogs',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(ChipModelDetailView, self).get_context_data(**kwargs)
+
+        chip_model = self.get_object()
+
+        modules = ChipModel.objects.filter(pk=chip_model.pk).order_by('module_build').values('module_build').distinct()
+
+        mods = []
+        for mod in modules:
+            mods.append(ModuleBuild.objects.get(pk=mod['module_build']))
+            # print(ModuleBuild.objects.get(pk=mod['module_build']))
+
+        self.extra_context.update(
+            {
+                'modules': mods
+            }
+        )
+        context.update(self.extra_context)
+        return context
+
+
+class ChipModelDeleteView(DeleteView):
+    model = ChipModel
+    success_url = reverse_lazy('device_model:chip_model_list')
+    template_name = 'workflow/confirm_delete.html'
+
+    path = [
+        ("home", "account:index"),
+        ("chip models", 'device_model/chip_model_list'),
+        ("chip model delete", "/device_model/chip_model_delete")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Chip Model Delete',
+        'section_title': 'Chip Model Delete',
+        'breadcrumb_path': path,
+        'create': 'device_model:chip_model_create',
+        'delete': 'device_model:chip_model_delete',
+        'update': 'device_model:chip_model_update',
+        'cancel': 'device_model:chip_model_list',
+        'icon': 'mdi-delete-variant',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(ChipModelDeleteView, self).get_context_data(**kwargs)
         context.update(self.extra_context)
         return context
 
@@ -1491,8 +1816,8 @@ class ModuleBuildModelNoListView(ListView):
 
     path = [
         ("home", "account:index"),
-        ("module types", "/device_model/module_build_model_no_list/"),
-        ("module type list", "/device_model/module_build_model_no_list")
+        ("module build model numbers", "/device_model/module_build_model_no_list/"),
+        ("module build model number list", "/device_model/module_build_model_no_list")
     ]
 
     extra_context = {
@@ -1628,12 +1953,190 @@ class ModuleBuildModelNoDeleteView(DeleteView):
 
 
 # --------------------------------------------
+# Module Build CRUD
+# --------------------------------------------
+# Create your views here.
+class ModuleBuildListView(ListView):
+    model = ModuleBuild
+    template_name = 'device_model/module_build_list.html'
+
+    path = [
+        ("home", "account:index"),
+        ("module builds", "/device_model/module_build_list/"),
+        ("module build list", "/device_model/module_build_list")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Module Build',
+        'section_title': 'Module Build',
+        'breadcrumb_path': path,
+        'create': 'device_model:module_build_create',
+        'delete': 'device_model:module_build_delete',
+        'update': 'device_model:module_build_update',
+        'cancel': 'device_model:module_build_list',
+        'icon': 'mdi-format-list-bulleted',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(ModuleBuildListView, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+    def get_queryset(self):
+        queryset = ModuleBuild.objects.all()
+        return queryset
+
+
+class ModuleBuildUpdateView(UpdateView):
+    model = ModuleBuild
+    form_class = ModuleBuildForm
+    template_name = 'device_model/modulebuild_form.html'
+
+    path = [
+        ("home", "account:index"),
+        ("module build", '/device_model/module_build_list'),
+        ("module build update", "/device_model/module_build_update")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Module Build Update',
+        'section_title': 'Module Build Update',
+        'breadcrumb_path': path,
+        'create': 'device_model:module_build_create',
+        'delete': 'device_model:module_build_delete',
+        'update': 'device_model:module_build_update',
+        'cancel': 'device_model:module_build_list',
+        'icon': 'fa fa-edit',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(ModuleBuildUpdateView, self).get_context_data(**kwargs)
+
+        chipmodel_form = ChipModelModuleBuildForm()
+        fc = {
+            'chipmodel_form': chipmodel_form
+        }
+
+        self.extra_context.update(fc)
+        context.update(self.extra_context)
+
+        return context
+
+
+class ModuleBuildCreateView(CreateView):
+    model = ModuleBuild
+    form_class = ModuleBuildForm
+    template_name = 'workflow/form.html'
+
+    path = [
+        ("home", "account:index"),
+        ("module builds", '/device_model/module_build_list'),
+        ("module build create", "/device_model/module_build_create")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Module Build Create',
+        'section_title': 'Module Build Create',
+        'breadcrumb_path': path,
+        'create': 'device_model:module_build_create',
+        'delete': 'device_model:module_build_delete',
+        'update': 'device_model:module_build_update',
+        'cancel': 'device_model:module_build_list',
+        'icon': 'fa fa-plus',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(ModuleBuildCreateView, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+
+class ModuleBuildDetailView(DetailView):
+    model = ModuleBuild
+    template_name = 'device_model/module_build_detail.html'
+
+    path = [
+        ("home", "account:index"),
+        ("module builds", '/device_model/module_build__list'),
+        ("module build detail", "/device_model/module_build_view")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Module Build Detail',
+        'section_title': 'Module Build Detail',
+        'breadcrumb_path': path,
+        'create': 'device_model:module_build_create',
+        'delete': 'device_model:module_build_delete',
+        'update': 'device_model:module_build_update',
+        'cancel': 'device_model:module_build_list',
+        'icon': 'fa fa-cogs',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(ModuleBuildDetailView, self).get_context_data(**kwargs)
+
+        # get all the chip_models for this module_build
+        # chip_model = ChipModel.objects.filter(module_build=ModuleBuild.objects.get(pk=self.kwargs['pk']))
+
+        module = self.get_object()
+        # print(str(module))
+        chips = module.chipmodel_set.values('chip').distinct()
+        # print(type(chips))
+
+        chips_context = {}
+        chip_count_list = []
+
+        for chip in chips:
+            c = Chip.objects.get(pk=chip['chip'])
+            print(c.model.name)
+            print(ChipModel.objects.filter(chip=c, module_build=module).count())
+            chip_string = str(ChipModel.objects.filter(chip=c, module_build=module).count()) + " x " + c.model.name + "(" + c.model.code_name + ")"
+            chip_count_list.append(chip_string)
+
+        print(str(chip_count_list))
+        chips_context.update({'chips': chip_count_list})
+
+        self.extra_context.update(chips_context)
+
+        context.update(self.extra_context)
+        return context
+
+
+class ModuleBuildDeleteView(DeleteView):
+    model = ModuleBuild
+    success_url = reverse_lazy('device_model:module_build_list')
+    template_name = 'workflow/confirm_delete.html'
+
+    path = [
+        ("home", "account:index"),
+        ("module builds", 'device_model/module_build_list'),
+        ("module build delete", "/device_model/module_build_delete")
+    ]
+
+    extra_context = {
+        'breadcrumb_title': 'Module Build Delete',
+        'section_title': 'Module Build Delete',
+        'breadcrumb_path': path,
+        'create': 'device_model:module_build_create',
+        'delete': 'device_model:module_build_delete',
+        'update': 'device_model:module_build_update',
+        'cancel': 'device_model:module_build_list',
+        'icon': 'mdi-delete-variant',
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super(ModuleBuildDeleteView, self).get_context_data(**kwargs)
+        context.update(self.extra_context)
+        return context
+
+
+# --------------------------------------------
 # Chip Model Number CRUD
 # --------------------------------------------
 # Create your views here.
 class ChipModelNoListView(ListView):
     model = ChipModelNo
-    template_name = 'workflow/list.html'
+    template_name = 'device_model/chip_model_list.html'
 
     path = [
         ("home", "account:index"),
@@ -1720,7 +2223,7 @@ class ChipModelNoCreateView(CreateView):
 
 class ChipModelNoDetailView(DetailView):
     model = ChipModelNo
-    template_name = 'workflow/detail.html'
+    template_name = 'device_model/chip_model_no_detail.html'
 
     path = [
         ("home", "account:index"),
@@ -1771,6 +2274,15 @@ class ChipModelNoDeleteView(DeleteView):
         context = super(ChipModelNoDeleteView, self).get_context_data(**kwargs)
         context.update(self.extra_context)
         return context
+
+
+# -------------------------------------------------------------------------------------------------#
+#                                    Complex Functions                                             #
+# -------------------------------------------------------------------------------------------------#
+
+def add_chips_to_module_build(request):
+
+    pass
 
 
 # -------------------------------------------------------------------------------------------------#
