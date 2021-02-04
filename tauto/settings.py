@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'jj*k*4i-+v)=%dsr*85m2@rjqq@z@49@8wlo4iz2^&!_mj^wae'
+SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -88,8 +88,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'tauto',
-        'USER': 'root',
-        'PASSWORD': 'arista123',
+        'USER': '',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '',
     }
@@ -137,8 +137,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp-relay.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'elliott.castillo@teamrubicontraining.com'
-EMAIL_HOST_PASSWORD = '3nrcs12Three'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
@@ -157,7 +157,7 @@ CELERY_CACHE_BACKEND = 'django-cache'
 # this is for the registration system
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_OPEN = True
-REGISTRATION_DEFAULT_FROM_EMAIL = 'elliott.castillo@sitenaut.com'
+REGISTRATION_DEFAULT_FROM_EMAIL = ''
 REGISTRATION_EMAIL_HTML = True
 REGISTRATION_AUTO_LOGIN = True
 SITE_ID = 1
