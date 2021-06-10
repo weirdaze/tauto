@@ -1,4 +1,4 @@
-Django==2.1.4
+Django==2.2.24
 django-registration-redux==2.6
 kombu==4.5.0
 mysqlclient==1.4.1
